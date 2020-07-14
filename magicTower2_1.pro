@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     dmsdoor.cpp \
+    fight.cpp \
     main.cpp \
     mainwindow.cpp \
     store.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     dmsdoor.h \
+    fight.h \
     mainwindow.h \
     mt.h \
     store.h \
@@ -31,6 +33,7 @@ HEADERS += \
 
 FORMS += \
     dmsdoor.ui \
+    fight.ui \
     mainwindow.ui \
     store.ui
 
@@ -43,6 +46,7 @@ SUBDIRS += \
     magicTower2_1.pro
 
 RESOURCES += \
+    Graphics/res.qrc \
     Sound_sour.qrc \
     Sprite_sour_01.qrc \
     Sprite_sour_02.qrc \

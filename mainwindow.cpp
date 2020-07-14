@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "store.h"
 #include "mt.h"
+#include"fight.h"
 
 
 FLOOR Tower[TOTAL_FLOOR];
@@ -55,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene_floor = new QGraphicsScene;
     pixmap_items = new QGraphicsPixmapItem*[X * Y];
     setWindowTitle("魔塔");
+    this->setWindowIcon(QPixmap(":/Titles/icon.png"));
 }
 
 void MainWindow::display_data()
@@ -597,10 +599,16 @@ int handle_keypress(int key_no)
             return 0;
         }
         else {
+            Fight *fight = new Fight(braver->name,m_array[monster_id].name,braver->hp,m_array[monster_id].hp,braver->at,braver->df,m_array[monster_id].at,m_array[monster_id].df);
+            fight->show();
             braver->hp -= damage;
             braver->gold += m_array[monster_id].gold;
             braver->exp += m_array[monster_id].exp;
             Tower[braver->floor][target_pos] = 0;
+            QObject::connect(fight,&Fight::quit,[=]()
+            {
+                    fight->close();
+            });
             return 5;
         }
     }

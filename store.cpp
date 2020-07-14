@@ -1,5 +1,6 @@
 #include "store.h"
 #include "ui_store.h"
+#include<QMainWindow>
 
 //store *wstore;
 store::store(QWidget *parent) :
@@ -11,6 +12,8 @@ store::store(QWidget *parent) :
     QPalette palette;
     palette.setBrush(QPalette::Window, QPixmap::fromImage(img_background));
     this->setPalette(palette);
+    this->setWindowIcon(QPixmap(":/Titles/icon.png"));
+    this->setWindowTitle("商店");
 }
 
 store::~store()
