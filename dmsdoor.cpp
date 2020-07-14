@@ -8,10 +8,17 @@ dmsdoor::dmsdoor(QWidget *parent) :
     ui(new Ui::dmsdoor)
 {
     ui->setupUi(this);
+    this->setFixedSize(203,188);
+    ui->label->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 13px;}");
+    ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+    ui->my_dmsdoor->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
     QImage img_background = QImage(":/new/prefix1/Images/Image 79.png");
     QPalette palette;
     palette.setBrush(QPalette::Window, QPixmap::fromImage(img_background));
     this->setPalette(palette);
+    this->setWindowIcon(QPixmap(":/Titles/icon.png"));
+    this->setWindowTitle("任意门");
 }
 
 dmsdoor::~dmsdoor()

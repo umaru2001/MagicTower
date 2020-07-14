@@ -10,6 +10,10 @@ Fight::Fight(QString B, QString M, int B_hp, int M_hp, int B_at, int B_df, int M
     this->setFixedSize(410,306);
     this->setWindowIcon(QPixmap(":/Titles/icon.png"));
     this->setWindowTitle("战斗");
+    QImage img_background = QImage(":/new/prefix1/Images/Image 79.png");
+    QPalette palette;
+    palette.setBrush(QPalette::Window, QPixmap::fromImage(img_background));
+    this->setPalette(palette);
     ui->at->setText(QString("攻击: %1").arg(B_at));
     ui->at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
     ui->hp->setText(QString("生命值: %1").arg(B_hp));

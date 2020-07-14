@@ -24,9 +24,9 @@ void init_tower()
             0, 0, 0, 1, 0, 0, 51, 51, 51, 1, 0,
             0, 51, 0, 1, 0, 1, 1, 1, 1, 1, 0,
             1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-            34, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1,
+            34, 0, 0, 1, 26, 0, 1, 1, 1, 0, 1,
             35, 37, 0, 1, 0, 0, 0, 1, 0, 51, 0,
-            36, 38, 39, 1, 0, 0, 0, 1, 0, 0, 0,
+            36, 38, 39, 1, 47, 0, 0, 1, 0, 0, 0,
     };
     memcpy(Tower[0], tmpfloor_1, sizeof(int) * X * Y);
 
@@ -710,7 +710,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             store *sstore = new store;
             sstore->braver = braver;
             sstore->vars = vars;
-            sstore->setGeometry(this->geometry());
+            sstore->setWindowModality(Qt::ApplicationModal);
             connect(sstore,&store::closeSignal,this,[=](){
                 display_data();
             });

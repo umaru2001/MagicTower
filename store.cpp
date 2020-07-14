@@ -8,6 +8,7 @@ store::store(QWidget *parent) :
     ui(new Ui::store)
 {
     ui->setupUi(this);
+    this->setFixedSize(354,299);
     QImage img_background = QImage(":/new/prefix1/Images/Image 79.png");
     QPalette palette;
     palette.setBrush(QPalette::Window, QPixmap::fromImage(img_background));
