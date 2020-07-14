@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Sprite/Sprite 4005.swf</file>
+        <file>Sprite/Sprite 4021.swf</file>
+        <file>Sprite/Sprite 4046.swf</file>
+        <file>Sprite/Sprite 4048.swf</file>
+        <file>Sprite/Sprite 4056.swf</file>
+        <file>Sprite/Sprite 4058.swf</file>
+        <file>Sprite/Sprite 4061.swf</file>
+        <file>Sprite/Sprite 4065.swf</file>
+        <file>Sprite/Sprite 4067.swf</file>
+        <file>Sprite/Sprite 4069.swf</file>
+        <file>Sprite/Sprite 4077.swf</file>
+        <file>Sprite/Sprite 4103.swf</file>
+        <file>Sprite/Sprite 4104.swf</file>
+        <file>Sprite/Sprite 4128.swf</file>
+        <file>Sprite/Sprite 4140.swf</file>
+        <file>Sprite/Sprite 4145.swf</file>
+        <file>Sprite/Sprite 4147.swf</file>
+        <file>Sprite/Sprite 4149.swf</file>
+        <file>Sprite/Sprite 4150.swf</file>
+        <file>Sprite/Sprite 4154.swf</file>
+        <file>Sprite/Sprite 4162.swf</file>
+        <file>Sprite/Sprite 4168.swf</file>
+        <file>Sprite/Sprite 4172.swf</file>
+        <file>Sprite/Sprite 4173.swf</file>
+        <file>Sprite/Sprite 4176.swf</file>
+        <file>Sprite/Sprite 4177.swf</file>
+        <file>Sprite/Sprite 4182.swf</file>
+        <file>Sprite/Sprite 4183.swf</file>
+        <file>Sprite/Sprite 4210.swf</file>
+        <file>Sprite/Sprite 4219.swf</file>
+        <file>Sprite/Sprite 4221.swf</file>
+        <file>Sprite/Sprite 4222.swf</file>
+        <file>Sprite/Sprite 4232.swf</file>
+        <file>Sprite/Sprite 4248.swf</file>
+        <file>Sprite/Sprite 4249.swf</file>
+    </qresource>
+</RCC>

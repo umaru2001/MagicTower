@@ -1,0 +1,53 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Sprite/Sprite 2014.swf</file>
+        <file>Sprite/Sprite 2046.swf</file>
+        <file>Sprite/Sprite 2070.swf</file>
+        <file>Sprite/Sprite 2084.swf</file>
+        <file>Sprite/Sprite 2111.swf</file>
+        <file>Sprite/Sprite 2149.swf</file>
+        <file>Sprite/Sprite 2178.swf</file>
+        <file>Sprite/Sprite 2199.swf</file>
+        <file>Sprite/Sprite 2217.swf</file>
+        <file>Sprite/Sprite 2218.swf</file>
+        <file>Sprite/Sprite 2225.swf</file>
+        <file>Sprite/Sprite 2261.swf</file>
+        <file>Sprite/Sprite 2270.swf</file>
+        <file>Sprite/Sprite 2309.swf</file>
+        <file>Sprite/Sprite 2339.swf</file>
+        <file>Sprite/Sprite 2362.swf</file>
+        <file>Sprite/Sprite 2385.swf</file>
+        <file>Sprite/Sprite 2425.swf</file>
+        <file>Sprite/Sprite 2480.swf</file>
+    </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>Sprite/Sprite 2523.swf</file>
+        <file>Sprite/Sprite 2546.swf</file>
+        <file>Sprite/Sprite 2568.swf</file>
+        <file>Sprite/Sprite 2605.swf</file>
+        <file>Sprite/Sprite 2631.swf</file>
+        <file>Sprite/Sprite 2662.swf</file>
+        <file>Sprite/Sprite 2709.swf</file>
+        <file>Sprite/Sprite 2734.swf</file>
+        <file>Sprite/Sprite 2735.swf</file>
+        <file>Sprite/Sprite 2758.swf</file>
+        <file>Sprite/Sprite 2782.swf</file>
+        <file>Sprite/Sprite 2796.swf</file>
+        <file>Sprite/Sprite 2803.swf</file>
+        <file>Sprite/Sprite 2810.swf</file>
+        <file>Sprite/Sprite 2854.swf</file>
+        <file>Sprite/Sprite 2857.swf</file>
+        <file>Sprite/Sprite 2965.swf</file>
+        <file>Sprite/Sprite 2974.swf</file>
+        <file>Sprite/Sprite 2975.swf</file>
+        <file>Sprite/Sprite 2976.swf</file>
+        <file>Sprite/Sprite 2977.swf</file>
+        <file>Sprite/Sprite 2980.swf</file>
+        <file>Sprite/Sprite 2983.swf</file>
+        <file>Sprite/Sprite 2985.swf</file>
+        <file>Sprite/Sprite 2987.swf</file>
+        <file>Sprite/Sprite 2991.swf</file>
+        <file>Sprite/Sprite 2995.swf</file>
+        <file>Sprite/Sprite 2999.swf</file>
+    </qresource>
+</RCC>

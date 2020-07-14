@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Titles/info.png</file>
+        <file>Titles/start.png</file>
+        <file>Titles/Information.png</file>
+        <file>Titles/close.png</file>
+        <file>Titles/bg.jpg</file>
+        <file>Titles/load.png</file>
+        <file>Titles/bg.png</file>
+        <file>Titles/icon.png</file>
+        <file>Titles/fightbgd.png</file>
+        <file>Titles/back.png</file>
+    </qresource>
+</RCC>
