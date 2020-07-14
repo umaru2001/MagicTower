@@ -92,8 +92,8 @@
     <rect>
      <x>240</x>
      <y>10</y>
-     <width>101</width>
-     <height>241</height>
+     <width>184</width>
+     <height>264</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -111,8 +111,12 @@
     </property>
     <item>
      <widget class="QLabel" name="label_1">
+      <property name="styleSheet">
+       <string notr="true">font: 75 9pt &quot;Agency FB&quot;;
+color: rgb(255, 170, 0);</string>
+      </property>
       <property name="text">
-       <string>当前角色状态</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffaa00;&quot;&gt;当前角色状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>

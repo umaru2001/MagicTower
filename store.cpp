@@ -283,15 +283,23 @@ void store::set_text()
     int store_price_2 = 50;//第二个商店从50golds开始涨价
     store_price_0 += vars->BuyTimes_0;
     store_price_2 += vars->BuyTimes_1 * 2;
+    ui->label_1->setStyleSheet("QLabel {color:orange;font: bold 16px;}");
     switch (vars->store_no)
     {
     case 0:
         ui->god->setText("食婪之神");
+            ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->store_message->setText("尊敬的勇士您好，如果您给我"+QString::number(store_price_0)+"金币,我便能满足你一个要求：");
         ui->hp_plus->setText("1.体力+400");
         ui->at_plus->setText("2.攻击+3");
         ui->df_plus->setText("3.防御+3");
         ui->exit->setText("4.离开");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->store_message->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->hp_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->at_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->df_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->exit->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->label_2->setText("当前等级：");
         ui->label_3->setText("当前体力：");
         ui->label_4->setText("当前攻击：");
@@ -302,6 +310,16 @@ void store::set_text()
         ui->my_at->setText(QString::number(braver->at));
         ui->my_df->setText(QString::number(braver->df));
         ui->my_gold->setText(QString::number(braver->gold));
+        ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_5->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_4->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_6->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         break;
     case 1:
         ui->god->setText("经验之神");
@@ -310,6 +328,12 @@ void store::set_text()
         ui->at_plus->setText("2.攻击+1(20 exp)");
         ui->df_plus->setText("3.防御+2(20 exp)");
         ui->exit->setText("4.离开");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->store_message->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->hp_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->at_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->df_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->exit->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->label_2->setText("当前等级：");
         ui->label_3->setText("当前体力：");
         ui->label_4->setText("当前攻击：");
@@ -320,6 +344,16 @@ void store::set_text()
         ui->my_at->setText(QString::number(braver->at));
         ui->my_df->setText(QString::number(braver->df));
         ui->my_gold->setText(QString::number(braver->exp));
+        ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_5->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_4->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_6->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         break;
     case 2:
         ui->god->setText("食婪之神");
@@ -328,16 +362,32 @@ void store::set_text()
         ui->at_plus->setText("2.攻击+6");
         ui->df_plus->setText("3.防御+6");
         ui->exit->setText("4.离开");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->store_message->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->hp_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->at_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->df_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->exit->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->label_2->setText("当前等级：");
         ui->label_3->setText("当前体力：");
         ui->label_4->setText("当前攻击：");
         ui->label_5->setText("当前防御：");
         ui->label_6->setText("当前金币：");
-        ui->my_lv->setText(QString::number(braver->lv));
+        ui->my_lv->setText(QString("生命值: %1").arg(braver->lv));
         ui->my_hp->setText(QString::number(braver->hp));
         ui->my_at->setText(QString::number(braver->at));
         ui->my_df->setText(QString::number(braver->df));
         ui->my_gold->setText(QString::number(braver->gold));
+        ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_5->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_4->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_6->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         break;
     case 3:
         ui->god->setText("经验之神");
@@ -346,6 +396,12 @@ void store::set_text()
         ui->at_plus->setText("2.攻击+1(50 exp)");
         ui->df_plus->setText("3.防御+2(50 exp)");
         ui->exit->setText("4.离开");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->store_message->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->hp_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->at_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->df_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->exit->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->label_2->setText("当前等级：");
         ui->label_3->setText("当前体力：");
         ui->label_4->setText("当前攻击：");
@@ -356,6 +412,16 @@ void store::set_text()
         ui->my_at->setText(QString::number(braver->at));
         ui->my_df->setText(QString::number(braver->df));
         ui->my_gold->setText(QString::number(braver->exp));
+        ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_5->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_4->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_6->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         break;
     case 4:
         ui->god->setText("小偷");
@@ -364,6 +430,12 @@ void store::set_text()
         ui->at_plus->setText("2.蓝钥匙(80 golds)");
         ui->df_plus->setText("   ");
         ui->exit->setText("4.离开");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->store_message->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->hp_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->at_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->df_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->exit->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->label_2->setText("当前黄钥匙：");
         ui->label_3->setText("  ");
         ui->label_4->setText("当前蓝钥匙：");
@@ -374,6 +446,16 @@ void store::set_text()
         ui->my_at->setText(QString::number(braver->bkey));
         ui->my_df->setText("  ");
         ui->my_gold->setText(QString::number(braver->gold));
+        ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_5->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_4->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_6->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         break;
     case 5:
         ui->god->setText("神奇老人");
@@ -382,6 +464,12 @@ void store::set_text()
         ui->at_plus->setText("   ");
         ui->df_plus->setText("   ");
         ui->exit->setText("4.离开");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->store_message->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->hp_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->at_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->df_plus->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->exit->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->label_2->setText("  ");
         ui->label_3->setText("当前任意门：");
         ui->label_4->setText("  ");
@@ -392,6 +480,16 @@ void store::set_text()
         ui->my_at->setText("  ");
         ui->my_df->setText("  ");
         ui->my_gold->setText(QString::number(braver->gold));
+        ui->label_2->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_3->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_5->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_4->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->label_6->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         break;
     }
 

@@ -61,6 +61,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::display_data()
 {
+    ui->my_status->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->mystatus->setStyleSheet("QLabel {color:orange;font: bold 12px;}");
     switch(braver->status)
     {
     case 0:
@@ -83,9 +85,26 @@ void MainWindow::display_data()
     ui->my_rkey->setText(QString::number(braver->rkey));
     ui->my_gold->setText(QString::number(braver->gold));
     ui->floor_status->setText(QString::fromWCharArray(L"主塔"));
+    ui->floor_status->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
     ui->floor->setText(QString::number(braver->floor + 1) + QString::fromWCharArray(L"F"));
     ui->system_status->setText(vars->hint_msg);
     ui->item_status->setText(vars->gain_item_msg);
+    ui->my_lv->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_exp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->mylv->setStyleSheet("QLabel {color:orange;font: bold 12px;}");
+    ui->myat->setStyleSheet("QLabel {color:orange;font: bold 12px;}");
+    ui->myhp->setStyleSheet("QLabel {color:orange;font: bold 12px;}");
+    ui->mydf->setStyleSheet("QLabel {color:orange;font: bold 12px;}");
+    ui->myexp->setStyleSheet("QLabel {color:orange;font: bold 12px;}");
+    ui->my_ykey->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_bkey->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_rkey->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_gold->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->floor->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+
 }
 
 void MainWindow::init_image()
@@ -371,6 +390,7 @@ int calc_damage(int monster_id)
 int handle_keypress(int key_no)
 {
     // 返回操作状态。0为可以操作，1为对话模式（暂未实现），2为game_over, 3为开门, 4为上下楼, 5为战斗, 6为提示获得物品信息, 7为开启商店处理
+
     int target_pos;
     int old_data = -1;
     if (key_no == 0) { //向左
@@ -586,6 +606,7 @@ int handle_keypress(int key_no)
     }
     else if (Tower[braver->floor][target_pos] >= 51) {
         //怪物
+
         int monster_id = Tower[braver->floor][target_pos] - 51;
         int damage = calc_damage(monster_id);
         if (damage == -2) {
@@ -600,6 +621,7 @@ int handle_keypress(int key_no)
         }
         else {
             Fight *fight = new Fight(braver->name,m_array[monster_id].name,braver->hp,m_array[monster_id].hp,braver->at,braver->df,m_array[monster_id].at,m_array[monster_id].df);
+            fight->setWindowModality(Qt::ApplicationModal);
             fight->show();
             braver->hp -= damage;
             braver->gold += m_array[monster_id].gold;
@@ -673,7 +695,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             print_floor();
             display_data();
         }
-        else if (result == 5) { //5为战斗，后续会加入战斗动画
+        else if (result == 5) {
+            //5为战斗，后续会加入战斗动画
             result = 0;
             print_floor();
             display_data();
@@ -687,6 +710,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             store *sstore = new store;
             sstore->braver = braver;
             sstore->vars = vars;
+            sstore->setGeometry(this->geometry());
             connect(sstore,&store::closeSignal,this,[=](){
                 display_data();
             });
