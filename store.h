@@ -17,12 +17,13 @@ class store : public QWidget
 public:
     explicit store(QWidget *parent = nullptr);
     ~store();
-    void keyPressEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event) override;
     void set_text();
 
 private:
     Ui::store *ui;
     void closeEvent(QCloseEvent *event) override;
+
 signals:
     void closeSignal();
 public:

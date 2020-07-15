@@ -18,7 +18,7 @@ class dmsdoor : public QWidget
 public:
     explicit dmsdoor(QWidget *parent = nullptr);
     ~dmsdoor();
-    void keyPressEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event) override;
     void set_text();
     void is_falsewall();
     character* braver;

@@ -20,7 +20,7 @@ monster::monster(int h, int a, int d, int g, int e, int id, string n, string i) 
 
 }
 
-monster::monster():people(0, 0, 0, 0, 0, 0,0), id(0)
+monster::monster():people(0, 0, 0, 0, 0, "", ""), id(0)
 {
 
 }

@@ -26,7 +26,9 @@ public:
     void init_graphics(); //初始化主界面
     void print_floor(); //展示楼层信息
     void game_start();
+    void is_braver_survival();
     void keyPressEvent(QKeyEvent *event);//键盘响应事件函数,原main函数改写
+    int handle_keypress(int key_no); //对一个按键的处理判断
     ~MainWindow();
 
 private:

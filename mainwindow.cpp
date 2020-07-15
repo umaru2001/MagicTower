@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "store.h"
 #include "mt.h"
-#include"fight.h"
+#include "fight.h"
 
 
 FLOOR Tower[TOTAL_FLOOR];
@@ -10,7 +10,7 @@ int result = 0;
 character *braver = new character(900, 10, 10, 1000, 0, 10, 0, 0, 1, 1, 1, 1, 1, 0,"a", "O");
 //hp,at,df,gold,exp,(x,y),floor,face,lv,ykey,bkey,rkey,"name","img";
 monster m_array[1]=
-{ monster(50, 18, 2, 1000, 1, 1, "slm", "H") //hp,at,df,gold,exp,id,"name","img";
+{ monster(50, 1800, 2, 1000, 1, 1, "slm", "H") //hp,at,df,gold,exp,id,"name","img";
 };
 
 void init_tower()
@@ -387,10 +387,9 @@ int calc_damage(int monster_id)
     }
 }
 
-int handle_keypress(int key_no)
+int MainWindow::handle_keypress(int key_no)
 {
     // 返回操作状态。0为可以操作，1为对话模式（暂未实现），2为game_over, 3为开门, 4为上下楼, 5为战斗, 6为提示获得物品信息, 7为开启商店处理
-
     int target_pos;
     int old_data = -1;
     if (key_no == 0) { //向左
@@ -606,33 +605,21 @@ int handle_keypress(int key_no)
     }
     else if (Tower[braver->floor][target_pos] >= 51) {
         //怪物
-
         int monster_id = Tower[braver->floor][target_pos] - 51;
-        int damage = calc_damage(monster_id);
-        if (damage == -2) {
-            //在打不过时，不进行任何处理
-            vars->hint_msg = "你还不能打败他";
-            return 0;
-        }
-        else if (damage == -1 || damage >= braver->hp) {
-            //在打不过时，不进行任何处理
-            vars->hint_msg = "你还不能打败他";
-            return 0;
-        }
-        else {
-            Fight *fight = new Fight(braver->name,m_array[monster_id].name,braver->hp,m_array[monster_id].hp,braver->at,braver->df,m_array[monster_id].at,m_array[monster_id].df);
-            fight->setWindowModality(Qt::ApplicationModal);
-            fight->show();
-            braver->hp -= damage;
-            braver->gold += m_array[monster_id].gold;
-            braver->exp += m_array[monster_id].exp;
-            Tower[braver->floor][target_pos] = 0;
-            QObject::connect(fight,&Fight::quit,[=]()
-            {
-                    fight->close();
-            });
-            return 5;
-        }
+        Fight *fight = new Fight;
+        fight->braver = braver;
+        fight->mo = m_array[monster_id];
+        fight->tar_pos=target_pos;
+        fight->setWindowModality(Qt::ApplicationModal);
+        fight->init_text();
+        fight->show();
+        fight->fight();
+        //delete fight;
+        connect(fight,&Fight::closeSignal,this,[=](){
+              display_data();
+              print_floor();
+        });
+        return 0;
     }
     return 0;
 }
@@ -664,15 +651,15 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                 });
                 wdmsdoor->set_text();
                 wdmsdoor->show();
-                result=0;
+                result = 0;
             }
         }
-
         else if (result == 1) {
             vars->hint_msg="游戏结束！";
             result = 2;
         }
         if (result == 0) { //0为可以操作
+            is_braver_survival();
             print_floor();
             display_data();
         }
@@ -728,6 +715,14 @@ void MainWindow::game_start()
     display_data();
     init_tower();
     print_floor();
+}
+
+void MainWindow::is_braver_survival()
+{
+    if(braver->hp<=0)
+    {
+        result = 2; //后被定义为2
+    }
 }
 
 MainWindow::~MainWindow()
