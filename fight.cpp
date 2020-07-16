@@ -45,10 +45,12 @@ void Fight::setTextMonster()
     if(mo_hp > 0)
     {
         ui->mo_hp->setText(QString::number(mo_hp));
+        ui->mo_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
     }
     else
     {
         ui->mo_hp->setText("0");
+        ui->mo_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
     }
 }
 
@@ -57,10 +59,12 @@ void Fight::setTextBraver()
     if(braver->hp > 0)
     {
         ui->my_hp->setText(QString::number(braver->hp));
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
     }
     else
     {
         ui->my_hp->setText("0");
+        ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
     }
 }
 
@@ -71,6 +75,11 @@ void Fight::setTextGoldExp()
     ui->win->setText("胜利！");
     ui->text_gold->setText("金币：");
     ui->text_exp->setText("经验值：");
+    ui->win->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->gold->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->exp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->text_exp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->text_gold->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
 }
 
 void Fight::fight()
@@ -162,6 +171,13 @@ void Fight::init_text()
     ui->exp->setText(" ");
     ui->text_gold->setText(" ");
     ui->text_exp->setText(" ");
+    ui->mo_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_hp->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_at->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->my_df->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->mo_name->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->mo_at->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
+    ui->mo_df->setStyleSheet("QLabel {color:orange;font: bold 15px;}");
     mo_hp = mo.hp;
 }
 
