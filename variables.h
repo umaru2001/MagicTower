@@ -7,10 +7,10 @@
 #include<QString>
 using namespace std;
 
-#define TOTAL_FLOOR 2 //总层数
+#define TOTAL_FLOOR 30 //总层数
 #define X 11 //每层的x长度
 #define Y 11 //每层的y长度
-#define MONSTER_NUM 1 //怪物的数量
+#define MONSTER_NUM 62 //怪物的数量
 
 #define MOVE_LEFT 0;
 #define MOVE_UP 1;
