@@ -3,7 +3,7 @@
 #include "store.h"
 #include "mt.h"
 #include "fight.h"
-
+#include "dialog.h"
 
 FLOOR Tower[TOTAL_FLOOR];
 int result = 0;
@@ -189,11 +189,7 @@ void MainWindow::init_image()
     img_mstore[1] = QImage(":/new/prefix1/Images/Image 1543.png");
     img_mstore2[0] = QImage(":/new/prefix1/Images/Image 1582.png");
     img_mstore2[1] = QImage(":/new/prefix1/Images/Image 1580.png");
-    img_ydoor[0] = QImage(":/new/prefix1/Images/Image 106.png");
-    img_bdoor[0] = QImage(":/new/prefix1/Images/Image 115.png");
-    img_rdoor[0] = QImage(":/new/prefix1/Images/Image 123.png");
-    img_gdoor[0] = QImage(":/new/prefix1/Images/Image 139.png");
-    img_idoor[0] = QImage(":/new/prefix1/Images/Image 131.png");
+
     img_npcold[0] = QImage(":/new/prefix1/Images/Image 1586.png");
     img_npcold[1] = QImage(":/new/prefix1/Images/Image 1588.png");
     img_npcred[0] = QImage(":/new/prefix1/Images/Image 1562.png");
@@ -345,6 +341,15 @@ void MainWindow::init_image()
     img_monster[60][1] = QImage(":/new/prefix1/Images/Image 670.bmp");
     img_monster[61][0] = QImage(":/new/prefix1/Images/Image 664.bmp");
     img_monster[61][1] = QImage(":/new/prefix1/Images/Image 662.bmp");
+
+    for(int l=0; l < 3 ; l++)
+    {
+        img_ydoor[l] = QImage(":/Images/men001.png").copy(0,32*l,32,32+32*l);
+        img_bdoor[l] = QImage(":/Images/men001.png").copy(32,32*l,64,32+32*l);
+        img_rdoor[l] = QImage(":/Images/men001.png").copy(64,32*l,96,32+32*l);
+        img_gdoor[l] = QImage(":/Images/men001.png").copy(96,32*l,128,32+32*l);
+        img_idoor[l] = QImage(":/Images/men003.png").copy(96,32*l,128,32+32*l);
+    }
 }
 
 void MainWindow::init_graphics()
@@ -422,6 +427,20 @@ void MainWindow::init_graphics()
             NormalTime = 0;
         }
         print_floor_1(pos_x ,pos_y, NormalTime);
+    });
+
+    Opendoor=new QTimer(this);
+    Opendoortime=0;
+    connect(Opendoor,&QTimer::timeout,[=]()mutable{
+        if(Opendoortime<=3 && Opendoortime>=0)
+        {
+            print_floor();
+            Opendoortime++;
+        }
+        else
+        {
+            Opendoor->stop();
+        }
     });
 }
 
@@ -991,13 +1010,50 @@ void MainWindow::print_static(int x, int y)
 {
     for (y = 0; y <= Y - 1; y++) {
         for (x = 0; x <= X - 1; x++) {
-            //需要进行变换的事件序号：5，6，8，9，13，19，20，30，42-47，51+
             if (braver->pos_x == x && braver->pos_y == y){
                 pixmap_items[0] = new QGraphicsPixmapItem;
                 pixmap_items[0]->setPixmap(QPixmap::fromImage(img_braver[braver->face][1]));
                 //pixmap_items[0]->setPixmap(QPixmap::fromImage(img_braver[braver->face][0]));
                 pixmap_items[0]->setPos(QPointF(32 * x, 32 * y));
                 scene_floor->addItem(pixmap_items[0]);
+            }
+            else if (Tower[braver->floor][y * X + x] == OpenDoorTempData && y * X + x == OpenDoorTargetPos)
+            {
+                if (OpenDoorTempData == 21) //正在被打开的黄门
+                {
+                    pixmap_items[Opendoortime] = new QGraphicsPixmapItem;
+                    pixmap_items[Opendoortime]->setPixmap(QPixmap::fromImage(img_ydoor[Opendoortime]));
+                    pixmap_items[Opendoortime]->setPos(QPointF(32 * x,32 * y));
+                    scene_floor->addItem(pixmap_items[Opendoortime]);
+                }
+                if (OpenDoorTempData == 22) //正在被打开的蓝门
+                {
+                    pixmap_items[Opendoortime] = new QGraphicsPixmapItem;
+                    pixmap_items[Opendoortime]->setPixmap(QPixmap::fromImage(img_bdoor[Opendoortime]));
+                    pixmap_items[Opendoortime]->setPos(QPointF(32 * x,32 * y));
+                    scene_floor->addItem(pixmap_items[Opendoortime]);
+                }
+                if (OpenDoorTempData == 23) //正在被打开的红门
+                {
+                    pixmap_items[Opendoortime] = new QGraphicsPixmapItem;
+                    pixmap_items[Opendoortime]->setPixmap(QPixmap::fromImage(img_rdoor[Opendoortime]));
+                    pixmap_items[Opendoortime]->setPos(QPointF(32 * x,32 * y));
+                    scene_floor->addItem(pixmap_items[Opendoortime]);
+                }
+                if (OpenDoorTempData == 24) //正在被打开的绿门
+                {
+                    pixmap_items[Opendoortime] = new QGraphicsPixmapItem;
+                    pixmap_items[Opendoortime]->setPixmap(QPixmap::fromImage(img_gdoor[Opendoortime]));
+                    pixmap_items[Opendoortime]->setPos(QPointF(32 * x,32 * y));
+                    scene_floor->addItem(pixmap_items[Opendoortime]);
+                }
+                if (OpenDoorTempData == 25) //正在被打开的铁门
+                {
+                    pixmap_items[Opendoortime] = new QGraphicsPixmapItem;
+                    pixmap_items[Opendoortime]->setPixmap(QPixmap::fromImage(img_idoor[Opendoortime]));
+                    pixmap_items[Opendoortime]->setPos(QPointF(32 * x,32 * y));
+                    scene_floor->addItem(pixmap_items[Opendoortime]);
+                }
             }
             else if (Tower[braver->floor][y * X + x] == 1) //墙
             {
@@ -1230,7 +1286,6 @@ void MainWindow::print_floor()
     ui->Game_print_up->setScene(scene_floor);
 }
 
-
 int calc_damage(int monster_id)
 {
     //计算伤害值。
@@ -1255,8 +1310,8 @@ int calc_damage(int monster_id)
 int MainWindow::handle_keypress(int key_no)
 {
     // 返回操作状态。0为可以操作，1为对话模式（暂未实现），2为game_over, 3为开门, 4为上下楼, 5为战斗, 6为提示获得物品信息, 7为开启商店处理
-    int target_pos;
-    int old_data = -1;
+    target_pos = 0;
+    old_data = -1;
     if (key_no == 0) { //向左
         braver->face = 1; //0/1/2/3分别代表下左右上
         if (braver->pos_x == 0)
@@ -1295,8 +1350,17 @@ int MainWindow::handle_keypress(int key_no)
         braver->pos_y = target_pos / X;
         return 0;
     }
-    else if (Tower[braver->floor][target_pos] >= 1 && Tower[braver->floor][target_pos] <= 9) {
+    else if ((Tower[braver->floor][target_pos] >= 1 && Tower[braver->floor][target_pos] <= 8)
+             || (Tower[braver->floor][target_pos] >= 15 && Tower[braver->floor][target_pos] <= 18)
+             || (Tower[braver->floor][target_pos] >= 26 && Tower[braver->floor][target_pos] <= 30))
+    {
         //撞墙 位置不变化
+        return 0;
+    }
+    else if (Tower[braver->floor][target_pos] == 9) {
+        braver->hp-=50;
+        braver->pos_x = target_pos % X;
+        braver->pos_y = target_pos / X;
         return 0;
     }
     else if (Tower[braver->floor][target_pos] == 10) {
@@ -1333,22 +1397,47 @@ int MainWindow::handle_keypress(int key_no)
         return 4;
     }
     else if (Tower[braver->floor][target_pos] == 12) {
-        //触发结局一：离开。直接Game Over
-        vars->end_no = 1;
-        return 1;
+        //魔法阵
+        return 0;
+    }
+    else if (Tower[braver->floor][target_pos] == 13) {
+        //魔法阵
+        return 0;
     }
     else if (Tower[braver->floor][target_pos] == 14) {
-        vars->hint_msg = "3层之后的内容，还未制作完成。";
-        return 1;
-    }
+        //掉进洞里
+        if (braver->floor != 0) {
+            braver->floor -= 1;
+            int target_pos_lower = 0;
+            for (int _it = 0; _it <= X * Y - 1; _it++) {
+                if (Tower[braver->floor][_it] == 10) {
+                    target_pos_lower = _it;
+                    break;
+                }
+            }
+            braver->pos_x = target_pos_lower % X;
+            braver->pos_y = target_pos_lower / X;
 
+        }
+        return 4;
+    }
+    else if (Tower[braver->floor][target_pos] == 19||Tower[braver->floor][target_pos] == 20) {
+        //对话npc
+        dialog *dia=new dialog(this);
+        dia->show();
+        delete dia;
+        return 0;
+    }
     else if (Tower[braver->floor][target_pos] == 21) {
         //黄门
         if (braver->ykey >= 1) {
             braver->ykey -= 1;
-            Tower[braver->floor][target_pos] = 0;
+            return 3;
+            //Tower[braver->floor][target_pos] = 0;
+        }        
+        else {
+            return 0;
         }
-        return 3;
     }
     else if (Tower[braver->floor][target_pos] == 22) {
         //蓝门
@@ -1366,14 +1455,15 @@ int MainWindow::handle_keypress(int key_no)
         }
         return 3;
     }
+    else if (Tower[braver->floor][target_pos] == 24) {
+        //绿门
+        //is_greendoor_open();
+        return 3;
+    }
     else if (Tower[braver->floor][target_pos] == 25) {
         //铁门
         Tower[braver->floor][target_pos] = 0;
         return 3;
-    }
-    else if (Tower[braver->floor][target_pos] == 26) {
-        //暗墙
-        return 0;
     }
     else if (Tower[braver->floor][target_pos] == 31) {
         //黄钥匙
@@ -1399,29 +1489,29 @@ int MainWindow::handle_keypress(int key_no)
     else if (Tower[braver->floor][target_pos] == 34) {
         //小血瓶 序号：34
         Tower[braver->floor][target_pos] = 0;
-        braver->hp += 50;
-        vars->gain_item_msg = "获得了小血瓶 生命值增加50";
+        braver->hp += 150;
+        vars->gain_item_msg = "获得了小血瓶 生命值增加150";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 35) {
         //大血瓶 序号：35
         Tower[braver->floor][target_pos] = 0;
-        braver->hp += 200;
-        vars->gain_item_msg = "获得了大血瓶 生命值增加200";
+        braver->hp += 400;
+        vars->gain_item_msg = "获得了大血瓶 生命值增加400";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 36) {
         //红宝石 序号：36
         Tower[braver->floor][target_pos] = 0;
-        braver->at += 1;
-        vars->gain_item_msg = "获得了红宝石 攻击力增加1点";
+        braver->at += 3;
+        vars->gain_item_msg = "获得了红宝石 攻击力增加3点";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 37) {
         //蓝宝石 序号：37
         Tower[braver->floor][target_pos] = 0;
-        braver->df += 1;
-        vars->gain_item_msg = "获得了蓝宝石 防御力增加1点";
+        braver->df += 3;
+        vars->gain_item_msg = "获得了蓝宝石 防御力增加3点";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 38) {
@@ -1434,8 +1524,22 @@ int MainWindow::handle_keypress(int key_no)
     else if (Tower[braver->floor][target_pos] == 39) {
         //铁盾 序号：39
         Tower[braver->floor][target_pos] = 0;
-        braver->df += 10;
-        vars->gain_item_msg = "获得了铁盾 防御力增加10点";
+        braver->df += 13;
+        vars->gain_item_msg = "获得了铁盾 防御力增加13点";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 40) {
+        //银剑
+        Tower[braver->floor][target_pos] = 0;
+        braver->at += 16;
+        vars->gain_item_msg = "获得了银剑 攻击力增加16点";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 41) {
+        //银盾
+        Tower[braver->floor][target_pos] = 0;
+        braver->at += 22;
+        vars->gain_item_msg = "获得了银盾 攻击力增加22点";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 42) {
@@ -1468,7 +1572,7 @@ int MainWindow::handle_keypress(int key_no)
         vars->store_no = 5;
         return 7;
     }
-    else if (Tower[braver->floor][target_pos] >= 51) {
+    else if (Tower[braver->floor][target_pos] >= 51&&Tower[braver->floor][target_pos] <= 120) {
         //怪物
         int monster_id = Tower[braver->floor][target_pos] - 51;
         Fight *fight = new Fight;
@@ -1495,7 +1599,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         {
 
             if(event->key() == Qt::Key_Up){ //向上
-                // = 0;
                 result = handle_keypress(1);
             }
             if(event->key() == Qt::Key_Down){ //向下
@@ -1538,10 +1641,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             //break;
         }
         else if (result == 3) { //3为正在开门中
-            print_floor();
             display_data();
-            QTimer * timerykey = new QTimer(this);
-
+            Opendoor->start(30);
+            OpenDoorTargetPos=target_pos;
+            OpenDoorTempData=old_data;
+            Tower[braver->floor][target_pos] = 0;
+            print_floor();
             result = 0;
         }
         else if (result == 4) { //4为上下楼转场

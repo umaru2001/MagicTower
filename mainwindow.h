@@ -27,12 +27,18 @@ public:
     void print_floor();//展示楼层信息
     void print_floor_1(int x,int y,int t);
     void print_static(int x,int y);
+    void is_greendoor_open();//实现绿门的判断
 
     void game_start();
     void is_braver_survival();
     void keyPressEvent(QKeyEvent *event);//键盘响应事件函数,原main函数改写
     int handle_keypress(int key_no); //对一个按键的处理判断
     ~MainWindow();
+
+    int target_pos;
+    int old_data;
+    int OpenDoorTempData;
+    int OpenDoorTargetPos;
 
 private:
     Ui::MainWindow *ui;
@@ -84,6 +90,9 @@ private:
 
     QTimer* NormalTimer; //层内动态效果的定时器
     int NormalTime;
+
+    QTimer* Opendoor;
+    int Opendoortime;
 
     //dmsdoor *wdmsdoor;
 };

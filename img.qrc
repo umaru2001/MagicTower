@@ -1243,4 +1243,8 @@
         <file>Images/Image 96.png</file>
         <file>Images/Image 93.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>Images/men001.png</file>
+        <file>Images/men003.png</file>
+    </qresource>
 </RCC>
