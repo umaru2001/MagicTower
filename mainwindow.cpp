@@ -8,7 +8,7 @@
 
 FLOOR Tower[TOTAL_FLOOR];
 int result = 0;
-character* braver = new character(90000, 100, 100, 1000, 0, 10, 0, 1, 1, 1, 1, 1, 1, 0, "a", "O");
+character* braver = new character(90000, 100, 100, 1000, 0, 5, 9, 13, 3, 1, 1, 1, 1, 0, "a", "O");
 //hp,at,df,gold,exp,(x,y),floor,face,lv,ykey,bkey,rkey,"name","img";
 monster m_array[MONSTER_NUM] =
 {   monster(35,19,2,0,1,0, "绿色史莱姆", "51"),

@@ -27,16 +27,6 @@ void Fight::keyPressEvent(QKeyEvent *ev)
     {
         if(ev->key() == Qt::Key_Q)
         {
-            timer1->stop();
-            timer2->stop();
-            timer3->stop();
-            timer4->stop();
-            timer5->stop();
-            delete timer1;
-            delete timer2;
-            delete timer3;
-            delete timer4;
-            delete timer5;
             this->close();
         }
     }
@@ -595,5 +585,15 @@ void Fight::is_monster_remain()
 
 void Fight::closeEvent(QCloseEvent *event)
 {
+    timer1->stop();
+    timer2->stop();
+    timer3->stop();
+    timer4->stop();
+    timer5->stop();
+    delete timer1;
+    delete timer2;
+    delete timer3;
+    delete timer4;
+    delete timer5;
     emit closeSignal();
 }
