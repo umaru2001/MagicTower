@@ -23,7 +23,7 @@ Fight::~Fight()
 
 void Fight::keyPressEvent(QKeyEvent *ev)
 {
-    if(mo_hp>0)
+    if(timer1->isActive()==true)
     {
         if(ev->key() == Qt::Key_Q)
         {
@@ -37,7 +37,6 @@ void Fight::keyPressEvent(QKeyEvent *ev)
             this->close();
         }
     }
-
 }
 
 void Fight::setTextMonster()
@@ -99,11 +98,6 @@ void Fight::fight()
             {
                 timer1->stop();
                 timer2->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 this->close();
             }
         });
@@ -118,11 +112,6 @@ void Fight::fight()
             {
                 timer1->stop();
                 timer2->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -151,11 +140,6 @@ void Fight::fight_twotimes()
                 timer1->stop();
                 timer2->stop();
                 timer3->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 this->close();
             }
         });
@@ -171,11 +155,6 @@ void Fight::fight_twotimes()
                 timer1->stop();
                 timer2->stop();
                 timer3->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -193,11 +172,6 @@ void Fight::fight_twotimes()
                 timer1->stop();
                 timer2->stop();
                 timer3->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -230,11 +204,6 @@ void Fight::fight_threetimes()
                 timer2->stop();
                 timer3->stop();
                 timer4->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 this->close();
             }
         });
@@ -251,11 +220,6 @@ void Fight::fight_threetimes()
                 timer2->stop();
                 timer3->stop();
                 timer4->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -274,11 +238,6 @@ void Fight::fight_threetimes()
                 timer2->stop();
                 timer3->stop();
                 timer4->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -297,11 +256,6 @@ void Fight::fight_threetimes()
                 timer2->stop();
                 timer3->stop();
                 timer4->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -338,11 +292,6 @@ void Fight::fight_fourtimes()
                 timer3->stop();
                 timer4->stop();
                 timer5->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 this->close();
             }
         });
@@ -360,11 +309,6 @@ void Fight::fight_fourtimes()
                 timer3->stop();
                 timer4->stop();
                 timer5->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -384,11 +328,6 @@ void Fight::fight_fourtimes()
                 timer3->stop();
                 timer4->stop();
                 timer5->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -408,11 +347,6 @@ void Fight::fight_fourtimes()
                 timer3->stop();
                 timer4->stop();
                 timer5->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();
@@ -432,11 +366,6 @@ void Fight::fight_fourtimes()
                 timer3->stop();
                 timer4->stop();
                 timer5->stop();
-                delete timer1;
-                delete timer2;
-                delete timer3;
-                delete timer4;
-                delete timer5;
                 is_monster_remain();
                 is_braver_survival();
                 setTextGoldExp();

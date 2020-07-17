@@ -62,6 +62,12 @@ void dmsdoor::is_falsewall()
             gain->play();
             braver->dms_door--;
         }
+        else if(olddata==7&&olddata==9)
+        {
+            Tower[braver->floor][pos] = 0;
+            gain->play();
+            braver->dms_door--;
+        }
     }
     else
     {

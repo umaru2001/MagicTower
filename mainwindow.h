@@ -103,6 +103,7 @@ private:
     QImage img_uplv;
     QImage img_magickey;
     QImage img_magicwater;
+    QImage img_icemagic;
     QImage img_npcold[2];
     QImage img_npcred[2];
     QImage img_npcelf[2];

@@ -4,11 +4,12 @@
 #include "mt.h"
 #include "fight.h"
 #include "dialog.h"
-#include"mypushbutton.h"
+#include "mypushbutton.h"
 
 FLOOR Tower[TOTAL_FLOOR];
 int result = 0;
-character* braver = new character(90000, 100, 100, 1000, 0, 5, 9, 13, 3, 1, 1, 1, 1, 0, "a", "O");
+int isIceMagic = 0;
+character* braver = new character(90000, 100, 100, 1000, 0, 4, 5, 17, 3, 1, 1, 1, 1, 0, "a", "O");
 //hp,at,df,gold,exp,(x,y),floor,face,lv,ykey,bkey,rkey,"name","img";
 monster m_array[MONSTER_NUM] =
 {   monster(35,19,2,0,1,0, "绿色史莱姆", "51"),
@@ -311,9 +312,9 @@ void MainWindow::init_tower()
     FLOOR tmpfloor_17 = {
             0, 0, 0, 0, 1,159, 3, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 23, 3, 3, 3, 3, 0,
-            0, 1,57,40, 0, 1, 3, 63, 41, 3,0,
-            0, 1,57, 57, 0, 1, 3,94, 63, 3,0,
-            0, 1,21, 1, 0, 1, 3, 22, 3, 3, 0,
+            0, 1,57,40, 1, 9, 3, 63, 41, 3,0,
+            0, 1,57, 57, 1, 9, 3,94, 63, 3,0,
+            0, 1,21, 1, 1, 9, 3, 22, 3, 3, 0,
             10, 0, 0, 0, 0,11, 0, 0, 0, 0,27,
             0, 1, 1,21, 1, 0, 3, 22, 3, 3, 0,
             0, 1,57,57, 1, 0, 3, 94,63, 3, 0,
@@ -499,6 +500,7 @@ void MainWindow::init_image()
     img_uplv= QImage(":/new/prefix1/Images/Image 52.png");
     img_magickey= QImage(":/new/prefix1/Images/Image 34.png");
     img_magicwater= QImage(":/new/prefix1/Images/Image 55.png");
+    img_icemagic= QImage(":/new/prefix1/Images/Image 43.png");
 
     img_npcold[0] = QImage(":/new/prefix1/Images/Image 1586.png");
     img_npcold[1] = QImage(":/new/prefix1/Images/Image 1588.png");
@@ -1613,10 +1615,17 @@ void MainWindow::print_static(int x, int y)
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
-            else if (Tower[braver->floor][y * X + x] == 162) //铁盾
+            else if (Tower[braver->floor][y * X + x] == 162) //圣水
             {
                 pixmap_items[0] = new QGraphicsPixmapItem;
                 pixmap_items[0]->setPixmap(QPixmap::fromImage(img_magicwater));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
+            else if (Tower[braver->floor][y * X + x] == 159) //冰霜魔法
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_icemagic));
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
@@ -1706,8 +1715,17 @@ int MainWindow::handle_keypress(int key_no)
         return 0;
     }
     else if (Tower[braver->floor][target_pos] == 9) {
-        braver->hp-=50;
-        lava->play();
+        if(isIceMagic==0)
+        {
+            braver->hp-=50;
+            lava->play();
+        }
+        else if(isIceMagic==1)
+        {
+            braver->hp-=10;
+            lava_min->play();
+            Tower[braver->floor][target_pos] = 0;
+        }
         braver->pos_x = target_pos % X;
         braver->pos_y = target_pos / X;
         return 0;
@@ -1934,6 +1952,12 @@ int MainWindow::handle_keypress(int key_no)
         Tower[braver->floor][target_pos] = 0;
         braver->hp = braver->hp*2;
         vars->gain_item_msg = "获得了圣水 体力翻倍";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 159) {
+        Tower[braver->floor][target_pos] = 0;
+        isIceMagic = 1;
+        vars->gain_item_msg = "获得了冰霜魔法 碰到熔岩时体力损失减小 并能移除熔岩";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 42) {
