@@ -1246,5 +1246,7 @@
     <qresource prefix="/">
         <file>Images/men001.png</file>
         <file>Images/men003.png</file>
+        <file>Graphics/Titles/506fb13533fa828b347b9a04fc1f4134960a5a4a.png</file>
+        <file>Graphics/Titles/touming.png</file>
     </qresource>
 </RCC>

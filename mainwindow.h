@@ -55,11 +55,11 @@ private:
     QImage img_downstair;
     QImage img_wall_magiccircle[2];//魔法阵
     QImage img_wall_hole;//洞
-    QImage img_ydoor[4];
-    QImage img_bdoor[4];
-    QImage img_rdoor[4];
-    QImage img_gdoor[4];
-    QImage img_idoor[4];   
+    QImage img_ydoor[5];
+    QImage img_bdoor[5];
+    QImage img_rdoor[5];
+    QImage img_gdoor[5];
+    QImage img_idoor[5];
     QImage img_monster[MONSTER_NUM][2];
     QImage img_braver[4][3];
     QImage img_lstore; //商店左边

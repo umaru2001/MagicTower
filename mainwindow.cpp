@@ -342,13 +342,13 @@ void MainWindow::init_image()
     img_monster[61][0] = QImage(":/new/prefix1/Images/Image 664.bmp");
     img_monster[61][1] = QImage(":/new/prefix1/Images/Image 662.bmp");
 
-    for(int l=0; l < 3 ; l++)
+    for(int l = 0; l <= 4 ; l++)
     {
-        img_ydoor[l] = QImage(":/Images/men001.png").copy(0,32*l,32,32+32*l);
-        img_bdoor[l] = QImage(":/Images/men001.png").copy(32,32*l,64,32+32*l);
-        img_rdoor[l] = QImage(":/Images/men001.png").copy(64,32*l,96,32+32*l);
-        img_gdoor[l] = QImage(":/Images/men001.png").copy(96,32*l,128,32+32*l);
-        img_idoor[l] = QImage(":/Images/men003.png").copy(96,32*l,128,32+32*l);
+        img_ydoor[l] = QImage(":/Images/men001.png").copy(0,32*l,32,32);
+        img_bdoor[l] = QImage(":/Images/men001.png").copy(32,32*l,32,32);
+        img_rdoor[l] = QImage(":/Images/men001.png").copy(64,32*l,32,32);
+        img_gdoor[l] = QImage(":/Images/men001.png").copy(96,32*l,32,32);
+        img_idoor[l] = QImage(":/Images/men003.png").copy(96,32*l,32,32);
     }
 }
 
@@ -434,12 +434,15 @@ void MainWindow::init_graphics()
     connect(Opendoor,&QTimer::timeout,[=]()mutable{
         if(Opendoortime<=3 && Opendoortime>=0)
         {
-            print_floor();
             Opendoortime++;
+            print_floor();
         }
         else
         {
             Opendoor->stop();
+            OpenDoorTempData = -1;
+            OpenDoorTargetPos = -1;
+            Opendoortime=0;
         }
     });
 }
@@ -1017,7 +1020,7 @@ void MainWindow::print_static(int x, int y)
                 pixmap_items[0]->setPos(QPointF(32 * x, 32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
-            else if (Tower[braver->floor][y * X + x] == OpenDoorTempData && y * X + x == OpenDoorTargetPos)
+            else if (Tower[braver->floor][y * X + x] == 0 && y * X + x == OpenDoorTargetPos)
             {
                 if (OpenDoorTempData == 21) //正在被打开的黄门
                 {
