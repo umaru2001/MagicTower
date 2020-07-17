@@ -53,13 +53,15 @@ void dmsdoor::is_falsewall()
         if(olddata == 26)
         {
             Tower[braver->floor][pos] = 21;
+            gain->play();
+            braver->dms_door--;
         }
         else if(olddata>=27&&olddata<=30)
         {
             Tower[braver->floor][pos] = 13;
+            gain->play();
+            braver->dms_door--;
         }
-        gain->play();
-        braver->dms_door--;
     }
     else
     {

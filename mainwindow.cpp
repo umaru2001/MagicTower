@@ -797,6 +797,13 @@ void MainWindow::print_floor_1(int x,int y,int t)
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
+            else if (Tower[braver->floor][y * X + x] == 12) //魔法阵
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_wall_magiccircle[t]));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
             else if (Tower[braver->floor][y * X + x] == 19) //oldnpc
             {
                 pixmap_items[0] = new QGraphicsPixmapItem;
@@ -1410,13 +1417,6 @@ void MainWindow::print_static(int x, int y)
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
-            else if (Tower[braver->floor][y * X + x] == 12) //密道
-            {
-                pixmap_items[0] = new QGraphicsPixmapItem;
-                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_upstair));
-                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
-                scene_floor->addItem(pixmap_items[0]);
-            }
             else if (Tower[braver->floor][y * X + x] == 10) //上楼
             {
                 pixmap_items[0] = new QGraphicsPixmapItem;
@@ -1511,7 +1511,7 @@ void MainWindow::print_static(int x, int y)
             else if (Tower[braver->floor][y * X + x] == 28) //暗墙-变魔法阵
             {
                 pixmap_items[0] = new QGraphicsPixmapItem;
-                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_wall_blue));
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_wall));
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
@@ -1909,7 +1909,7 @@ int MainWindow::handle_keypress(int key_no)
     else if (Tower[braver->floor][target_pos] == 41) {
         //银盾
         Tower[braver->floor][target_pos] = 0;
-        braver->at += 22;
+        braver->df += 22;
         vars->gain_item_msg = "获得了银盾 攻击力增加22点";
         return 6;
     }
@@ -1977,7 +1977,6 @@ int MainWindow::handle_keypress(int key_no)
         fight->init_text();
         fight->show();
         fight->is_fight_times();
-        //delete fight;
         connect(fight,&Fight::closeSignal,this,[=](){
               display_data();
               print_floor();
