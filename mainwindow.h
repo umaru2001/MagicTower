@@ -97,7 +97,12 @@ private:
     QImage img_ggem; //绿宝石
     QImage img_sword;
     QImage img_shield;
+    QImage img_sword2;
+    QImage img_shield2;
     QImage img_gold;
+    QImage img_uplv;
+    QImage img_magickey;
+    QImage img_magicwater;
     QImage img_npcold[2];
     QImage img_npcred[2];
     QImage img_npcelf[2];

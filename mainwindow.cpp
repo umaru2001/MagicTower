@@ -259,7 +259,7 @@ void MainWindow::init_tower()
             21, 0, 0, 0, 0, 1, 1, 68, 0, 36, 1,
             161, 23, 0, 0, 0, 0, 0, 1, 0, 35, 1,
             23, 0, 0, 0, 0, 0, 0, 1, 0, 68, 0,
-            26, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10,
+            28, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10,
 
     };
     memcpy(Tower[13], tmpfloor_13, sizeof(int) * X * Y);
@@ -334,7 +334,7 @@ void MainWindow::init_tower()
             0, 51,55,56,53,34,62,66,71,58, 0,
             161, 51,55,56,53,34,62,66,71,58, 0,
             161, 51,55,56,53,34,62,66,71,58, 0,
-            13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,//13层密室
+            12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,//13层密室
 
     };
     memcpy(Tower[31], mi1, sizeof(int) * X * Y);
@@ -344,7 +344,7 @@ void MainWindow::init_tower()
             0, 51,55,56,53,34,62,66,71,58,0,
             0, 51,55,56,53,34,62,66,71,58,0,
             0, 51,55,56,53,34,62,66,71,58, 0,
-            0, 51,55,56,53,34,62,66,71,58,13,
+            0, 51,55,56,53,34,62,66,71,58,12,
             0, 51,55,56,53,34,62,66,71,58, 0,
             0, 51,55,56,53,34,62,66,71,58, 0,
             0, 51,55,56,53,34,62,66,71,58, 0,
@@ -483,8 +483,10 @@ void MainWindow::init_image()
     img_rgem = QImage(":/new/prefix1/Images/Image 10.png");
     img_bgem = QImage(":/new/prefix1/Images/Image 13.png");
     img_ggem = QImage(":/new/prefix1/Images/Image 16.png");
-    img_sword = QImage(":/new/prefix1/Images/Image 1520.bmp");
-    img_shield = QImage(":/new/prefix1/Images/Image 1547.bmp");
+    img_sword = QImage(":/Graphics/Titles/Image 1040.png");
+    img_shield = QImage(":/Graphics/Titles/Image 1058.png");
+    img_sword2 = QImage(":/Graphics/Titles/Image 1043.png");
+    img_shield2 = QImage(":/Graphics/Titles/Image 1061.png");
     img_lstore = QImage(":/new/prefix1/Images/Image 559.png");
     img_lstore2 = QImage(":/new/prefix1/Images/Image 553.png");
     img_rstore = QImage(":/new/prefix1/Images/Image 562.png");
@@ -494,6 +496,9 @@ void MainWindow::init_image()
     img_mstore[1] = QImage(":/new/prefix1/Images/Image 1543.png");
     img_mstore2[0] = QImage(":/new/prefix1/Images/Image 1582.png");
     img_mstore2[1] = QImage(":/new/prefix1/Images/Image 1580.png");
+    img_uplv= QImage(":/new/prefix1/Images/Image 52.png");
+    img_magickey= QImage(":/new/prefix1/Images/Image 34.png");
+    img_magicwater= QImage(":/new/prefix1/Images/Image 55.png");
 
     img_npcold[0] = QImage(":/new/prefix1/Images/Image 1586.png");
     img_npcold[1] = QImage(":/new/prefix1/Images/Image 1588.png");
@@ -1580,6 +1585,41 @@ void MainWindow::print_static(int x, int y)
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
+            else if (Tower[braver->floor][y * X + x] == 40) //银剑
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_sword2));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
+            else if (Tower[braver->floor][y * X + x] == 41) //银盾
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_shield2));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
+            else if (Tower[braver->floor][y * X + x] == 161) //魔法钥匙
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_magickey));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
+            else if (Tower[braver->floor][y * X + x] == 151) //升级器
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_uplv));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
+            else if (Tower[braver->floor][y * X + x] == 162) //铁盾
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_magicwater));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
         }
     }
 }
@@ -1771,17 +1811,21 @@ int MainWindow::handle_keypress(int key_no)
         //蓝门
         if (braver->bkey >= 1) {
             braver->bkey -= 1;
-            Tower[braver->floor][target_pos] = 0;
+            return 3;
+        }        
+        else {
+            return 0;
         }
-        return 3;
     }
     else if (Tower[braver->floor][target_pos] == 23) {
         //红门
         if (braver->rkey >= 1) {
             braver->rkey -= 1;
-            Tower[braver->floor][target_pos] = 0;
+            return 3;
         }
-        return 3;
+        else {
+            return 0;
+        }
     }
     else if (Tower[braver->floor][target_pos] == 24) {
         //绿门
@@ -1790,7 +1834,6 @@ int MainWindow::handle_keypress(int key_no)
     }
     else if (Tower[braver->floor][target_pos] == 25) {
         //铁门
-        Tower[braver->floor][target_pos] = 0;
         return 3;
     }
     else if (Tower[braver->floor][target_pos] == 31) {
@@ -1868,6 +1911,29 @@ int MainWindow::handle_keypress(int key_no)
         Tower[braver->floor][target_pos] = 0;
         braver->at += 22;
         vars->gain_item_msg = "获得了银盾 攻击力增加22点";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 151) {
+        Tower[braver->floor][target_pos] = 0;
+        braver->lv += 1;
+        braver->hp += 300;
+        braver->df += 3;
+        braver->at += 3;
+        vars->gain_item_msg = "获得了升级器 等级增加1级";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 161) {
+        Tower[braver->floor][target_pos] = 0;
+        braver->ykey += 1;
+        braver->bkey += 1;
+        braver->rkey += 1;
+        vars->gain_item_msg = "获得了魔法钥匙 各钥匙数量加1";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 162) {
+        Tower[braver->floor][target_pos] = 0;
+        braver->hp = braver->hp*2;
+        vars->gain_item_msg = "获得了圣水 体力翻倍";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 42) {
