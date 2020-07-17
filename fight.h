@@ -45,6 +45,11 @@ public:
     void closeEvent(QCloseEvent *event) override;
 
 private:
+    QTimer *timer1;
+    QTimer *timer2;
+    QTimer *timer3;
+    QTimer *timer4;
+    QTimer *timer5;
     Ui::Fight *ui;
 };
 
