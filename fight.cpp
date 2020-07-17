@@ -124,9 +124,333 @@ void Fight::fight()
         });
 }
 
+void Fight::fight_twotimes()
+{
+    QTimer *timer1=new QTimer(this);
+    timer1->start(1000);
+    QTimer *timer2=new QTimer(this);
+    QTimer *timer3=new QTimer(this);
+    QTimer::singleShot(500, timer2, [=](){
+        timer2->start(1000);
+    });
+    QTimer::singleShot(600, timer3, [=](){
+        timer3->start(1000);
+    });
+    connect(timer1,&QTimer::timeout,[=](){
+            if(braver->hp>0)
+            {
+                mo_hp-=calc_mo_damage();
+                setTextMonster();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                this->close();
+            }
+        });
+     connect(timer2,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+     connect(timer3,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+}
+
+void Fight::fight_threetimes()
+{
+    QTimer *timer1=new QTimer(this);
+    timer1->start(1000);
+    QTimer *timer2=new QTimer(this);
+    QTimer *timer3=new QTimer(this);
+    QTimer *timer4=new QTimer(this);
+    QTimer::singleShot(500, timer2, [=](){
+        timer2->start(1000);
+    });
+    QTimer::singleShot(600, timer3, [=](){
+        timer3->start(1000);
+    });
+    QTimer::singleShot(700, timer4, [=](){
+        timer4->start(1000);
+    });
+    connect(timer1,&QTimer::timeout,[=](){
+            if(braver->hp>0)
+            {
+                mo_hp-=calc_mo_damage();
+                setTextMonster();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                this->close();
+            }
+        });
+     connect(timer2,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+     connect(timer3,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+     connect(timer4,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+}
+
+void Fight::fight_fourtimes()
+{
+    QTimer *timer1=new QTimer(this);
+    timer1->start(1000);
+    QTimer *timer2=new QTimer(this);
+    QTimer *timer3=new QTimer(this);
+    QTimer *timer4=new QTimer(this);
+    QTimer *timer5=new QTimer(this);
+    QTimer::singleShot(500, timer2, [=](){
+        timer2->start(1000);
+    });
+    QTimer::singleShot(570, timer3, [=](){
+        timer3->start(1000);
+    });
+    QTimer::singleShot(640, timer4, [=](){
+        timer4->start(1000);
+    });
+    QTimer::singleShot(710, timer5, [=](){
+        timer5->start(1000);
+    });
+    connect(timer1,&QTimer::timeout,[=](){
+            if(braver->hp>0)
+            {
+                mo_hp-=calc_mo_damage();
+                setTextMonster();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                timer5->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                delete timer5;
+                this->close();
+            }
+        });
+     connect(timer2,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                timer5->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                delete timer5;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+     connect(timer3,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                timer5->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                delete timer5;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+     connect(timer4,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                timer5->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                delete timer5;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+     connect(timer5,&QTimer::timeout,[=](){
+            if(mo_hp > 0)
+            {
+                braver->hp-=calc_my_damage();
+                setTextBraver();
+            }
+            else
+            {
+                timer1->stop();
+                timer2->stop();
+                timer3->stop();
+                timer4->stop();
+                timer5->stop();
+                delete timer1;
+                delete timer2;
+                delete timer3;
+                delete timer4;
+                delete timer5;
+                is_monster_remain();
+                is_braver_survival();
+                setTextGoldExp();
+            }
+        });
+}
+
+void Fight::is_fight_times()
+{
+    if(mo.id==18)
+    {
+        fight_fourtimes();
+    }
+    else if(mo.id==6)
+    {
+        fight_threetimes();
+    }
+    else if(mo.id==5||mo.id==17||mo.id==33||mo.id==34||mo.id==54)
+    {
+        fight_twotimes();
+    }
+    else
+    {
+        fight();
+    }
+}
+
 int Fight::calc_my_damage()
 {
-    if(mo.id>=21&&mo.id<=34) //魔法师攻击
+    if(mo.id>=20&&mo.id<=33) //魔法师攻击
     {
         return mo.at;
     }
@@ -145,13 +469,27 @@ int Fight::calc_my_damage()
 
 int Fight::calc_mo_damage()
 {
-    if(braver->at>mo.df)
+    if(mo.id==53||mo.id==61)
     {
-        return braver->at-mo.df;
+        if(braver->at>mo.df)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else
     {
-        return 0;
+        if(braver->at>mo.df)
+        {
+            return braver->at-mo.df;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
 

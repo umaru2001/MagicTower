@@ -16,24 +16,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Information.cpp \
+    beginning.cpp \
     dialog.cpp \
     dmsdoor.cpp \
     fight.cpp \
     main.cpp \
     mainwindow.cpp \
+    mypushbutton.cpp \
     store.cpp \
     variables.cpp
 
 HEADERS += \
+    Information.h \
+    beginning.h \
     dialog.h \
     dmsdoor.h \
     fight.h \
     mainwindow.h \
     mt.h \
+    mypushbutton.h \
     store.h \
     variables.h
 
 FORMS += \
+    beginning.ui \
     dialog.ui \
     dmsdoor.ui \
     fight.ui \

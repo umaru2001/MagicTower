@@ -33,6 +33,10 @@ public:
     void setTextBraver();
     void setTextGoldExp();
     void fight();
+    void fight_twotimes();
+    void fight_threetimes();
+    void fight_fourtimes();
+    void is_fight_times();
     int calc_my_damage();
     int calc_mo_damage();
     void init_text();

@@ -19,6 +19,8 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+signals:
+    void back();
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void display_data();
