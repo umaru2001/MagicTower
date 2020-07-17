@@ -6,6 +6,7 @@
 #include <QKeyEvent>
 #include <QEvent>
 #include "variables.h"
+#include <QtMultimedia/QSound>
 
 namespace Ui {
 class dmsdoor;
@@ -23,6 +24,10 @@ public:
     void is_falsewall();
     character* braver;
     GLOBAL_VARS* vars;
+    int pos;
+    int olddata;
+
+    QSound *gain;
 
 private:
     Ui::dmsdoor *ui;

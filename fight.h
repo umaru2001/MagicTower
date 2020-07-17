@@ -7,6 +7,7 @@
 #include <QEvent>
 #include <QTimer>
 #include <QMainWindow>
+#include <QtMultimedia/QSound>
 
 namespace Ui {
 class Fight;
@@ -43,6 +44,8 @@ public:
     void is_braver_survival();
     void is_monster_remain(); //用于复活怪物的判断
     void closeEvent(QCloseEvent *event) override;
+
+    QSound *attack;
 
 private:
     QTimer *timer1;

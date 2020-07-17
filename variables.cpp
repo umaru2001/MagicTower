@@ -43,7 +43,7 @@ character::~character()
 
 }
 
-GLOBAL_VARS::GLOBAL_VARS(int end, int op) :end_no(end), OperationStatus(op)
+GLOBAL_VARS::GLOBAL_VARS(int end, int op,int b0,int b1) :end_no(end), OperationStatus(op),BuyTimes_0(b1),BuyTimes_1(b1)
 {
 
 }

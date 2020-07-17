@@ -10,6 +10,7 @@
 #include <QWidget>
 #include "dmsdoor.h"
 #include "variables.h"
+#include <QtMultimedia/QSound>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +25,7 @@ signals:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void display_data();
+    void init_tower();
     void init_image();
     void init_graphics(); //初始化主界面
     void print_floor();//展示楼层信息
@@ -35,15 +37,30 @@ public:
     void is_braver_survival();
     void keyPressEvent(QKeyEvent *event);//键盘响应事件函数,原main函数改写
     int handle_keypress(int key_no); //对一个按键的处理判断
+    void init_audio();
     ~MainWindow();
 
-    int target_pos;
+    int target_pos;  //开门动画数据
     int old_data;
     int OpenDoorTempData;
     int OpenDoorTargetPos;
 
+    int FloorTempData;  //密室数据
+    int *chamber;
+
 private:
     Ui::MainWindow *ui;
+    QSound *BGM1;
+    QSound *BGM2;
+    QSound *go;
+    QSound *up_and_down;
+    QSound *trans;
+    QSound *lava;
+    QSound *lava_min;
+    QSound *hole;
+    QSound *door_open;
+    QSound *gain;
+
     QImage img_wall;//棕墙
     QImage img_wall_grey;//灰墙
     QImage img_wall_blue;//蓝墙

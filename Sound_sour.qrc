@@ -1,90 +1,22 @@
 <RCC>
-    <qresource prefix="/new/prefix1">
-        <file>Music/Sound/Sound 3680.mp3</file>
-        <file>Music/Sound/Sound 3681.mp3</file>
-        <file>Music/Sound/Sound 3682.mp3</file>
-        <file>Music/Sound/Sound 3683.mp3</file>
-        <file>Music/Sound/Sound 3684.mp3</file>
-        <file>Music/Sound/Sound 3848.mp3</file>
-    </qresource>
-    <qresource prefix="/new/prefix2">
-        <file>Music/Sound_tx/Sound 109.mp3</file>
-        <file>Music/Sound_tx/Sound 157.mp3</file>
-        <file>Music/Sound_tx/Sound 842.mp3</file>
-        <file>Music/Sound_tx/Sound 856.mp3</file>
-        <file>Music/Sound_tx/Sound 875.mp3</file>
-        <file>Music/Sound_tx/Sound 1083.mp3</file>
-        <file>Music/Sound_tx/Sound 1104.mp3</file>
-        <file>Music/Sound_tx/Sound 1119.mp3</file>
-        <file>Music/Sound_tx/Sound 1240.mp3</file>
-        <file>Music/Sound_tx/Sound 1260.mp3</file>
-        <file>Music/Sound_tx/Sound 1275.mp3</file>
-        <file>Music/Sound_tx/Sound 1315.mp3</file>
-        <file>Music/Sound_tx/Sound 1334.mp3</file>
-        <file>Music/Sound_tx/Sound 1355.mp3</file>
-        <file>Music/Sound_tx/Sound 1419.mp3</file>
-        <file>Music/Sound_tx/Sound 1500.mp3</file>
-        <file>Music/Sound_tx/Sound 1621.mp3</file>
-        <file>Music/Sound_tx/Sound 1632.mp3</file>
-        <file>Music/Sound_tx/Sound 1644.mp3</file>
-        <file>Music/Sound_tx/Sound 1655.mp3</file>
-        <file>Music/Sound_tx/Sound 1682.mp3</file>
-        <file>Music/Sound_tx/Sound 1697.mp3</file>
-        <file>Music/Sound_tx/Sound 1711.mp3</file>
-        <file>Music/Sound_tx/Sound 1720.mp3</file>
-        <file>Music/Sound_tx/Sound 1728.mp3</file>
-        <file>Music/Sound_tx/Sound 1761.mp3</file>
-        <file>Music/Sound_tx/Sound 1834.mp3</file>
-        <file>Music/Sound_tx/Sound 1856.mp3</file>
-        <file>Music/Sound_tx/Sound 1862.mp3</file>
-        <file>Music/Sound_tx/Sound 1873.mp3</file>
-        <file>Music/Sound_tx/Sound 1921.mp3</file>
-        <file>Music/Sound_tx/Sound 1929.mp3</file>
-        <file>Music/Sound_tx/Sound 1944.mp3</file>
-        <file>Music/Sound_tx/Sound 1957.mp3</file>
-        <file>Music/Sound_tx/Sound 2017.mp3</file>
-        <file>Music/Sound_tx/Sound 2087.mp3</file>
-        <file>Music/Sound_tx/Sound 2100.mp3</file>
-        <file>Music/Sound_tx/Sound 2114.mp3</file>
-        <file>Music/Sound_tx/Sound 2129.mp3</file>
-        <file>Music/Sound_tx/Sound 2132.mp3</file>
-        <file>Music/Sound_tx/Sound 2200.mp3</file>
-        <file>Music/Sound_tx/Sound 2206.mp3</file>
-        <file>Music/Sound_tx/Sound 2248.mp3</file>
-        <file>Music/Sound_tx/Sound 2322.mp3</file>
-        <file>Music/Sound_tx/Sound 2342.mp3</file>
-        <file>Music/Sound_tx/Sound 2406.mp3</file>
-        <file>Music/Sound_tx/Sound 2483.mp3</file>
-        <file>Music/Sound_tx/Sound 2502.mp3</file>
-        <file>Music/Sound_tx/Sound 2526.mp3</file>
-        <file>Music/Sound_tx/Sound 2533.mp3</file>
-        <file>Music/Sound_tx/Sound 2557.mp3</file>
-        <file>Music/Sound_tx/Sound 2573.mp3</file>
-        <file>Music/Sound_tx/Sound 2588.mp3</file>
-        <file>Music/Sound_tx/Sound 2608.mp3</file>
-        <file>Music/Sound_tx/Sound 2691.mp3</file>
-        <file>Music/Sound_tx/Sound 2785.mp3</file>
-        <file>Music/Sound_tx/Sound 2797.mp3</file>
-        <file>Music/Sound_tx/Sound 2858.mp3</file>
-        <file>Music/Sound_tx/Sound 2967.mp3</file>
-        <file>Music/Sound_tx/Sound 2986.mp3</file>
-        <file>Music/Sound_tx/Sound 2989.mp3</file>
-        <file>Music/Sound_tx/Sound 3012.mp3</file>
-        <file>Music/Sound_tx/Sound 3102.mp3</file>
-        <file>Music/Sound_tx/Sound 3128.mp3</file>
-        <file>Music/Sound_tx/Sound 3188.mp3</file>
-        <file>Music/Sound_tx/Sound 3190.mp3</file>
-        <file>Music/Sound_tx/Sound 3292.mp3</file>
-        <file>Music/Sound_tx/Sound 3468.mp3</file>
-        <file>Music/Sound_tx/Sound 3634.mp3</file>
-        <file>Music/Sound_tx/Sound 3914.mp3</file>
-        <file>Music/Sound_tx/Sound 3915.mp3</file>
-        <file>Music/Sound_tx/Sound 3916.mp3</file>
-        <file>Music/Sound_tx/Sound 3917.mp3</file>
-        <file>Music/Sound_tx/Sound 3918.mp3</file>
-        <file>Music/Sound_tx/Sound 3919.mp3</file>
-        <file>Music/Sound_tx/Sound 3920.mp3</file>
-        <file>Music/Sound_tx/Sound 4010.mp3</file>
-        <file>Music/Sound_tx/Sound 4178.mp3</file>
+    <qresource prefix="/new/prefix3">
+        <file>Music/Sound_tx/attack.wav</file>
+        <file>Music/Sound_tx/attack_plus.wav</file>
+        <file>Music/Sound_tx/buy.wav</file>
+        <file>Music/Sound_tx/cancel.wav</file>
+        <file>Music/Sound_tx/choice.wav</file>
+        <file>Music/Sound_tx/door_open.wav</file>
+        <file>Music/Sound_tx/false.wav</file>
+        <file>Music/Sound_tx/go.wav</file>
+        <file>Music/Sound_tx/hole.wav</file>
+        <file>Music/Sound_tx/hp_plus.wav</file>
+        <file>Music/Sound_tx/lava.wav</file>
+        <file>Music/Sound_tx/lava_min.wav</file>
+        <file>Music/Sound_tx/miss.wav</file>
+        <file>Music/Sound_tx/poison.wav</file>
+        <file>Music/Sound_tx/trans.wav</file>
+        <file>Music/Sound_tx/up_and_down.wav</file>
+        <file>Music/Sound/Gameover.wav</file>
+        <file>Music/Sound_tx/gain.wav</file>
     </qresource>
 </RCC>

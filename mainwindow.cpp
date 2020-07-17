@@ -8,7 +8,7 @@
 
 FLOOR Tower[TOTAL_FLOOR];
 int result = 0;
-character* braver = new character(900, 10, 10, 10000, 0, 10, 0, 1, 1, 1, 1, 1, 1, 0, "a", "O");
+character* braver = new character(90000, 100, 100, 1000, 0, 10, 0, 1, 1, 1, 1, 1, 1, 0, "a", "O");
 //hp,at,df,gold,exp,(x,y),floor,face,lv,ykey,bkey,rkey,"name","img";
 monster m_array[MONSTER_NUM] =
 {   monster(35,19,2,0,1,0, "绿色史莱姆", "51"),
@@ -76,7 +76,7 @@ monster m_array[MONSTER_NUM] =
     monster(20,1399,999,99,9,61,"鬼邪石","112")
 };
 
-void init_tower()
+void MainWindow::init_tower()
 {
     FLOOR tmpfloor_1 = {
             10, 0, 51, 52, 51, 0, 0, 0, 0, 0, 0,
@@ -89,10 +89,9 @@ void init_tower()
             1, 21, 1, 1, 0, 0, 0, 0, 0, 0, 0,
             62, 62, 62, 1, 26, 0, 1, 1, 1, 21, 1,
             36, 37, 31, 1, 0, 0, 0, 1, 151, 66, 31,
-            35, 38, 32, 1, 47, 0, 0, 1, 0, 0, 0,
+            35, 38, 32, 1, 47, 0, 26, 1, 0, 0, 0,
     };
     memcpy(Tower[1], tmpfloor_1, sizeof(int) * X * Y);
-
     FLOOR tmpfloor_2 = {
         11, 0, 0, 62, 0, 0, 0, 62, 0, 0, 0,
         0, 1, 1, 22, 1, 1, 1, 22, 1, 1, 0,
@@ -338,7 +337,7 @@ void init_tower()
             13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,//13层密室
 
     };
-    memcpy(Tower[0], mi1, sizeof(int) * X * Y);
+    memcpy(Tower[31], mi1, sizeof(int) * X * Y);
     FLOOR mi2 = {
             0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0,
             0, 51,55,56,53,34,62,66,71,58, 0,
@@ -353,15 +352,14 @@ void init_tower()
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,//17层密室
 
     };
-    memcpy(Tower[0], mi2, sizeof(int) * X * Y);
+    memcpy(Tower[32], mi2, sizeof(int) * X * Y);
 
-
-
-
+    chamber=new int[31];
+    chamber[13]=31;
+    chamber[17]=32;
 }
 
-
-GLOBAL_VARS *vars = new GLOBAL_VARS(0, 0);
+GLOBAL_VARS *vars = new GLOBAL_VARS(0, 0, 0, 0);
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -385,6 +383,28 @@ MainWindow::MainWindow(QWidget *parent)
                     emit this->back();
                 });
         });
+}
+
+void MainWindow::init_audio()
+{
+    door_open =new QSound("D:/C++/magicTower/Music/Sound_tx/door_open.wav");
+    gain = new QSound("D:/C++/magicTower/Music/Sound_tx/gain.wav");
+    go = new QSound("D:/C++/magicTower/Music/Sound_tx/go.wav");
+    hole = new QSound("D:/C++/magicTower/Music/Sound_tx/hole.wav");
+    lava =new QSound("D:/C++/magicTower/Music/Sound_tx/lava.wav");
+    lava_min =new QSound("D:/C++/magicTower/Music/Sound_tx/lava_min.wav");
+    trans =new QSound("D:/C++/magicTower/Music/Sound_tx/trans.wav");
+    up_and_down=new QSound("D:/C++/magicTower/Music/Sound_tx/up_and_down.wav");
+
+    door_open->setLoops(1);
+    gain->setLoops(1);
+    go->setLoops(1);
+    hole->setLoops(1);
+    lava->setLoops(1);
+    lava_min->setLoops(1);
+    trans->setLoops(1);
+    up_and_down->setLoops(1);
+    door_open->setLoops(1);
 }
 
 void MainWindow::display_data()
@@ -1597,7 +1617,7 @@ int calc_damage(int monster_id)
 
 int MainWindow::handle_keypress(int key_no)
 {
-    // 返回操作状态。0为可以操作，1为对话模式（暂未实现），2为game_over, 3为开门, 4为上下楼, 5为战斗, 6为提示获得物品信息, 7为开启商店处理
+    // 返回操作状态。0为可以操作，1为穿越，2为game_over, 3为开门, 4为上下楼, 5为战斗, 6为提示获得物品信息, 7为开启商店处理,8为穿越
     target_pos = 0;
     old_data = -1;
     if (key_no == 0) { //向左
@@ -1647,6 +1667,7 @@ int MainWindow::handle_keypress(int key_no)
     }
     else if (Tower[braver->floor][target_pos] == 9) {
         braver->hp-=50;
+        lava->play();
         braver->pos_x = target_pos % X;
         braver->pos_y = target_pos / X;
         return 0;
@@ -1680,17 +1701,38 @@ int MainWindow::handle_keypress(int key_no)
             }
             braver->pos_x = target_pos_lower % X;
             braver->pos_y = target_pos_lower / X;
-
         }
         return 4;
     }
     else if (Tower[braver->floor][target_pos] == 12) {
-        //魔法阵
-        return 0;
+        //魔法阵出口
+            braver->floor = FloorTempData;
+            int target_pos_lower = 0;
+            for (int _it = 0; _it <= X * Y - 1; _it++) {
+                if (Tower[braver->floor][_it] == 13) {
+                    target_pos_lower = _it;
+                    break;
+                }
+            }
+            braver->pos_x = target_pos_lower % X;
+            braver->pos_y = target_pos_lower / X;
+            FloorTempData = -1;
+        return 8;
     }
     else if (Tower[braver->floor][target_pos] == 13) {
-        //魔法阵
-        return 0;
+        //魔法阵入口
+        FloorTempData = braver->floor;
+            braver->floor = chamber[FloorTempData];
+            int target_pos_lower = 0;
+            for (int _it = 0; _it <= X * Y - 1; _it++) {
+                if (Tower[braver->floor][_it] == 12) {
+                    target_pos_lower = _it;
+                    break;
+                }
+            }
+            braver->pos_x = target_pos_lower % X;
+            braver->pos_y = target_pos_lower / X;
+        return 8;
     }
     else if (Tower[braver->floor][target_pos] == 14) {
         //掉进洞里
@@ -1705,9 +1747,8 @@ int MainWindow::handle_keypress(int key_no)
             }
             braver->pos_x = target_pos_lower % X;
             braver->pos_y = target_pos_lower / X;
-
         }
-        return 4;
+        return 9;
     }
     else if (Tower[braver->floor][target_pos] == 19||Tower[braver->floor][target_pos] == 20) {
         //对话npc
@@ -1721,7 +1762,6 @@ int MainWindow::handle_keypress(int key_no)
         if (braver->ykey >= 1) {
             braver->ykey -= 1;
             return 3;
-            //Tower[braver->floor][target_pos] = 0;
         }        
         else {
             return 0;
@@ -1885,23 +1925,28 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
         if (result == 0)
         {
-
             if(event->key() == Qt::Key_Up){ //向上
                 result = handle_keypress(1);
+                go->play();
             }
             if(event->key() == Qt::Key_Down){ //向下
                 result = handle_keypress(3);
+                go->play();
             }
             if(event->key() == Qt::Key_Left){ //向左
                 result = handle_keypress(0);
+                go->play();
             }
             if(event->key() == Qt::Key_Right){ //向右
                 result = handle_keypress(2);
+                go->play();
             }
             if(event->key()==Qt::Key_T){
                 dmsdoor *wdmsdoor= new dmsdoor;
                 wdmsdoor->braver = braver;
                 wdmsdoor->vars = vars;
+                wdmsdoor->pos = target_pos;
+                wdmsdoor->olddata = old_data;
                 connect(wdmsdoor,&dmsdoor::closeSignal,this,[=](){
                     print_floor();
                 });
@@ -1930,6 +1975,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else if (result == 3) { //3为正在开门中
             display_data();
+            door_open->play();
             Opendoor->start(30);
             OpenDoorTargetPos=target_pos;
             OpenDoorTempData=old_data;
@@ -1938,6 +1984,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             result = 0;
         }
         else if (result == 4) { //4为上下楼转场
+            up_and_down->play();
             result = 0;
             print_floor();
             display_data();
@@ -1949,6 +1996,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             display_data();
         }
         else if (result == 6) { //6为打开获得物品界面
+            gain->play();
             result = 0;
             print_floor();
             display_data();
@@ -1966,10 +2014,23 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             vars->hint_msg = " ";
             result = 0;
         }
+        else if (result == 8) { //8为魔法阵
+            trans->play();
+            result = 0;
+            print_floor();
+            display_data();
+        }
+        else if (result == 9) { //8为掉落
+            hole->play();
+            result = 0;
+            print_floor();
+            display_data();
+        }
 }
 
 void MainWindow::game_start()
 {
+    init_audio();
     init_image();
     init_graphics();
     display_data();

@@ -15,6 +15,10 @@ store::store(QWidget *parent) :
     this->setPalette(palette);
     this->setWindowIcon(QPixmap(":/Titles/icon.png"));
     this->setWindowTitle("商店");
+    buy =new QSound("D:/C++/magicTower/Music/Sound_tx/buy.wav");
+    buy->setLoops(1);
+    cancel =new QSound("D:/C++/magicTower/Music/Sound_tx/cancel.wav");
+    cancel->setLoops(1);
 }
 
 store::~store()
@@ -34,6 +38,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_1){
             if (braver->gold >= store_price_0)
             {
+                buy->play();
                 braver->gold -= store_price_0;
                 braver->hp += 400;
                 vars->BuyTimes_0++;
@@ -47,6 +52,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_2){
             if (braver->gold >= store_price_0)
             {
+                buy->play();
                 braver->gold -= store_price_0;
                 braver->at += 3;
                 vars->BuyTimes_0++;
@@ -60,6 +66,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_3){
             if (braver->gold >= store_price_0)
             {
+                buy->play();
                 braver->gold -= store_price_0;
                 braver->df += 3;
                 vars->BuyTimes_0++;
@@ -71,6 +78,7 @@ void store::keyPressEvent(QKeyEvent *event)
             }break;
         }
         if(event->key() == Qt::Key_4){
+            cancel->play();
             this->close();
             break;
         }
@@ -83,6 +91,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_1){
             if (braver->exp >= 70)
             {
+                buy->play();
                 braver->exp -= 70;
                 braver->hp += 300;
                 braver->lv += 1;
@@ -97,6 +106,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_2){
             if (braver->exp >= 20)
             {
+                buy->play();
                 braver->exp -= 20;
                 braver->at += 1;
             }
@@ -108,7 +118,8 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_3){
             if (braver->exp >= 20)
             {
-                braver->gold -= 20;
+                buy->play();
+                braver->exp -= 20;
                 braver->df += 2;
             }
             else
@@ -117,6 +128,7 @@ void store::keyPressEvent(QKeyEvent *event)
             }break;
         }
         if(event->key() == Qt::Key_4){
+            cancel->play();
             this->close();
             break;
         }
@@ -130,6 +142,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_1){
             if (braver->gold >= store_price_2)
             {
+                buy->play();
                 braver->gold -= store_price_2;
                 braver->hp += 800;
                 vars->BuyTimes_1++;
@@ -143,6 +156,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_2){
             if (braver->gold >= store_price_2)
             {
+                buy->play();
                 braver->gold -= store_price_2;
                 braver->at += 6;
                 vars->BuyTimes_1++;
@@ -156,6 +170,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_3){
             if (braver->gold >= store_price_2)
             {
+                buy->play();
                 braver->gold -= store_price_2;
                 braver->df += 6;
                 vars->BuyTimes_1++;
@@ -167,6 +182,7 @@ void store::keyPressEvent(QKeyEvent *event)
             }break;
         }
         if(event->key() == Qt::Key_4){
+            cancel->play();
             this->close();
             break;
         }
@@ -178,6 +194,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_1){
             if (braver->gold >= 20)
             {
+                buy->play();
                 braver->gold -= 20;
                 braver->ykey += 1;
             }
@@ -189,6 +206,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_2){
             if (braver->gold >= 80)
             {
+                buy->play();
                 braver->gold -= 80;
                 braver->bkey += 1;
             }
@@ -198,6 +216,7 @@ void store::keyPressEvent(QKeyEvent *event)
             }break;
         }
         if(event->key() == Qt::Key_4){
+            cancel->play();
             this->close();
             break;
         }
@@ -210,6 +229,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_1){
             if (braver->exp >= 190)
             {
+                buy->play();
                 braver->exp -= 190;
                 braver->hp += 800;
                 braver->lv += 3;
@@ -224,6 +244,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_2){
             if (braver->exp >= 50)
             {
+                buy->play();
                 braver->exp -= 50;
                 braver->at += 3;
             }
@@ -235,7 +256,8 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_3){
             if (braver->exp >= 50)
             {
-                braver->gold -= 50;
+                buy->play();
+                braver->exp -= 50;
                 braver->df += 5;
             }
             else
@@ -244,6 +266,7 @@ void store::keyPressEvent(QKeyEvent *event)
             }break;
         }
         if(event->key() == Qt::Key_4){
+            cancel->play();
             this->close();
             break;
         }
@@ -257,6 +280,7 @@ void store::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_1){
             if (braver->gold >= 30)
             {
+                buy->play();
                 braver->gold -= 30;
                 braver->dms_door += 1;
             }
@@ -266,6 +290,7 @@ void store::keyPressEvent(QKeyEvent *event)
             }break;
         }
         if(event->key() == Qt::Key_4){
+            cancel->play();
             this->close();
             break;
         }
@@ -289,7 +314,7 @@ void store::set_text()
     {
     case 0:
         ui->god->setText("食婪之神");
-            ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
+        ui->god->setStyleSheet("QLabel {color:orange;font: bold 18px;}");
         ui->store_message->setText("尊敬的勇士您好，如果您给我"+QString::number(store_price_0)+"金币,我便能满足你一个要求：");
         ui->hp_plus->setText("1.体力+400");
         ui->at_plus->setText("2.攻击+3");

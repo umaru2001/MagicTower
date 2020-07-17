@@ -94,15 +94,14 @@ void Fight::setTextGoldExp()
 
 void Fight::fight()
 {
-    //timer1=new QTimer(this);
     timer1->start(1000);
-    //timer2=new QTimer(this);
     QTimer::singleShot(500, timer2, [=](){
         timer2->start(1000);
     });
         connect(timer1,&QTimer::timeout,[=](){
             if(braver->hp>0)
             {
+                attack->play();
                 mo_hp-=calc_mo_damage();
                 setTextMonster();
             }
@@ -121,6 +120,7 @@ void Fight::fight()
         connect(timer2,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -142,10 +142,7 @@ void Fight::fight()
 
 void Fight::fight_twotimes()
 {
-    //timer1=new QTimer(this);
     timer1->start(1000);
-    //timer2=new QTimer(this);
-    //timer3=new QTimer(this);
     QTimer::singleShot(500, timer2, [=](){
         timer2->start(1000);
     });
@@ -155,6 +152,7 @@ void Fight::fight_twotimes()
     connect(timer1,&QTimer::timeout,[=](){
             if(braver->hp>0)
             {
+                attack->play();
                 mo_hp-=calc_mo_damage();
                 setTextMonster();
             }
@@ -174,6 +172,7 @@ void Fight::fight_twotimes()
      connect(timer2,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -195,6 +194,7 @@ void Fight::fight_twotimes()
      connect(timer3,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -217,11 +217,7 @@ void Fight::fight_twotimes()
 
 void Fight::fight_threetimes()
 {
-    //timer1=new QTimer(this);
     timer1->start(1000);
-    //timer2=new QTimer(this);
-    //timer3=new QTimer(this);
-    //timer4=new QTimer(this);
     QTimer::singleShot(500, timer2, [=](){
         timer2->start(1000);
     });
@@ -234,6 +230,7 @@ void Fight::fight_threetimes()
     connect(timer1,&QTimer::timeout,[=](){
             if(braver->hp>0)
             {
+                attack->play();
                 mo_hp-=calc_mo_damage();
                 setTextMonster();
             }
@@ -254,6 +251,7 @@ void Fight::fight_threetimes()
      connect(timer2,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -276,6 +274,7 @@ void Fight::fight_threetimes()
      connect(timer3,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -298,6 +297,7 @@ void Fight::fight_threetimes()
      connect(timer4,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -321,12 +321,7 @@ void Fight::fight_threetimes()
 
 void Fight::fight_fourtimes()
 {
-    //timer1=new QTimer(this);
     timer1->start(1000);
-    //timer2=new QTimer(this);
-    //timer3=new QTimer(this);
-    //timer4=new QTimer(this);
-    //timer5=new QTimer(this);
     QTimer::singleShot(500, timer2, [=](){
         timer2->start(1000);
     });
@@ -342,6 +337,7 @@ void Fight::fight_fourtimes()
     connect(timer1,&QTimer::timeout,[=](){
             if(braver->hp>0)
             {
+                attack->play();
                 mo_hp-=calc_mo_damage();
                 setTextMonster();
             }
@@ -363,6 +359,7 @@ void Fight::fight_fourtimes()
      connect(timer2,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -386,6 +383,7 @@ void Fight::fight_fourtimes()
      connect(timer3,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -409,6 +407,7 @@ void Fight::fight_fourtimes()
      connect(timer4,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -432,6 +431,7 @@ void Fight::fight_fourtimes()
      connect(timer5,&QTimer::timeout,[=](){
             if(mo_hp > 0)
             {
+                attack->play();
                 braver->hp-=calc_my_damage();
                 setTextBraver();
             }
@@ -456,6 +456,8 @@ void Fight::fight_fourtimes()
 
 void Fight::is_fight_times()
 {
+    attack =new QSound("D:/C++/magicTower/Music/Sound_tx/attack.wav");
+    attack->setLoops(1);
     timer1=new QTimer(this);
     timer2=new QTimer(this);
     timer3=new QTimer(this);

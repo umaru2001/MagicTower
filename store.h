@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QEvent>
 #include "variables.h"
+#include <QtMultimedia/QSound>
 
 namespace Ui {
 class store;
@@ -19,6 +20,9 @@ public:
     ~store();
     void keyPressEvent(QKeyEvent *event) override;
     void set_text();
+
+    QSound *buy;
+    QSound *cancel;
 
 private:
     Ui::store *ui;

@@ -7,7 +7,7 @@
 #include<QString>
 using namespace std;
 
-#define TOTAL_FLOOR 30 //总层数
+#define TOTAL_FLOOR 33 //总层数
 #define X 11 //每层的x长度
 #define Y 11 //每层的y长度
 #define MONSTER_NUM 62 //怪物的数量
@@ -87,7 +87,7 @@ public:
 	int BuyTimes_1;
     QString mt_class;
 	GLOBAL_VARS();
-	GLOBAL_VARS(int end, int op);
+    GLOBAL_VARS(int end, int op,int b1,int b2);
 	~GLOBAL_VARS();
 };
 

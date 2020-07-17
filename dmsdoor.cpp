@@ -19,6 +19,8 @@ dmsdoor::dmsdoor(QWidget *parent) :
     this->setPalette(palette);
     this->setWindowIcon(QPixmap(":/Titles/icon.png"));
     this->setWindowTitle("任意门");
+    gain = new QSound("D:/C++/magicTower/Music/Sound_tx/gain.wav");
+    gain->setLoops(1);
 }
 
 dmsdoor::~dmsdoor()
@@ -48,22 +50,15 @@ void dmsdoor::is_falsewall()
 {
     if(braver->dms_door>0)
     {
-        if(Tower[braver->floor][(braver->pos_y+1) * X + braver->pos_x] == 26&&braver->face==0)
+        if(olddata == 26)
         {
-            Tower[braver->floor][(braver->pos_y+1) * X + braver->pos_x] = 21;
+            Tower[braver->floor][pos] = 21;
         }
-        else if(Tower[braver->floor][(braver->pos_y-1) * X + braver->pos_x] == 26&&braver->face==3)
+        else if(olddata>=27&&olddata<=30)
         {
-            Tower[braver->floor][(braver->pos_y-1) * X + braver->pos_x] = 21;
+            Tower[braver->floor][pos] = 13;
         }
-        else if(Tower[braver->floor][braver->pos_y * X + braver->pos_x-1] == 26&&braver->face==1)
-        {
-            Tower[braver->floor][braver->pos_y * X + braver->pos_x-1] = 21;
-        }
-        else if(Tower[braver->floor][braver->pos_y * X + braver->pos_x+1] == 26&&braver->face==2)
-        {
-            Tower[braver->floor][braver->pos_y * X + braver->pos_x+1] = 21;
-        }
+        gain->play();
         braver->dms_door--;
     }
     else
