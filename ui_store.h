@@ -48,7 +48,7 @@ public:
     {
         if (store->objectName().isEmpty())
             store->setObjectName(QString::fromUtf8("store"));
-        store->resize(352, 260);
+        store->resize(445, 291);
         verticalLayoutWidget_2 = new QWidget(store);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
         verticalLayoutWidget_2->setGeometry(QRect(99, 10, 131, 51));
@@ -93,12 +93,14 @@ public:
 
         verticalLayoutWidget_3 = new QWidget(store);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(240, 10, 101, 241));
+        verticalLayoutWidget_3->setGeometry(QRect(240, 10, 184, 264));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(3, 3, 0, 7);
         label_1 = new QLabel(verticalLayoutWidget_3);
         label_1->setObjectName(QString::fromUtf8("label_1"));
+        label_1->setStyleSheet(QString::fromUtf8("font: 75 9pt \"Agency FB\";\n"
+"color: rgb(255, 170, 0);"));
 
         verticalLayout_3->addWidget(label_1);
 
@@ -178,7 +180,7 @@ public:
         at_plus->setText(QCoreApplication::translate("store", "TextLabel", nullptr));
         df_plus->setText(QCoreApplication::translate("store", "TextLabel", nullptr));
         exit->setText(QCoreApplication::translate("store", "TextLabel", nullptr));
-        label_1->setText(QCoreApplication::translate("store", "\345\275\223\345\211\215\350\247\222\350\211\262\347\212\266\346\200\201", nullptr));
+        label_1->setText(QCoreApplication::translate("store", "<html><head/><body><p><span style=\" color:#ffaa00;\">\345\275\223\345\211\215\350\247\222\350\211\262\347\212\266\346\200\201</span></p></body></html>", nullptr));
         label_2->setText(QCoreApplication::translate("store", "\347\255\211\347\272\247\357\274\232", nullptr));
         my_lv->setText(QCoreApplication::translate("store", "TextLabel", nullptr));
         label_3->setText(QCoreApplication::translate("store", "\347\224\237\345\221\275\357\274\232", nullptr));
