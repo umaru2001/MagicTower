@@ -10,6 +10,7 @@ FLOOR Tower[TOTAL_FLOOR];
 int result = 0;
 int isIceMagic = 0;
 character* braver = new character(90000, 100, 100, 1000, 0, 4, 5, 1, 3, 1, 1, 1, 1, 0, "a", "O");
+
 //hp,at,df,gold,exp,(x,y),floor,face,lv,ykey,bkey,rkey,"name","img";
 monster m_array[MONSTER_NUM] =
 {   monster(35,19,2,0,1,0, "绿色史莱姆", "51"),
@@ -1892,9 +1893,14 @@ int MainWindow::handle_keypress(int key_no)
     }
     else if (Tower[braver->floor][target_pos] == 19||Tower[braver->floor][target_pos] == 20) {
         //对话npc
-        dialog *dia=new dialog(this);
+        dialog *dia=new dialog();
+        dia->braver=braver;
+        dia->vars=vars;
         dia->show();
-        delete dia;
+        dia->is_dialog();
+        connect(dia,&dialog::closeSignal,this,[=](){
+              display_data();
+        });
         return 0;
     }
     else if (Tower[braver->floor][target_pos] == 21) {
@@ -2197,7 +2203,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             print_floor();
             display_data();
         }
-        else if (result == 9) { //8为掉落
+        else if (result == 9) { //9为掉落
             hole->play();
             result = 0;
             print_floor();
@@ -2207,6 +2213,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::game_start()
 {
+    braver->floor_up=0;
+    braver->book=0;
     init_audio();
     init_image();
     init_graphics();

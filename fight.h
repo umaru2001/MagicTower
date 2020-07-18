@@ -47,6 +47,7 @@ public:
 
     QSound *attack;
 
+
 private:
     QTimer *timer1;
     QTimer *timer2;
