@@ -9,7 +9,7 @@
 FLOOR Tower[TOTAL_FLOOR];
 int result = 0;
 int isIceMagic = 0;
-character* braver = new character(90000, 100, 100, 1000, 0, 4, 5, 22, 3, 1, 1, 1, 1, 0, "a", "O");
+character* braver = new character(90000, 100, 100, 1000, 0, 4, 5, 1, 3, 1, 1, 1, 1, 0, "a", "O");
 //hp,at,df,gold,exp,(x,y),floor,face,lv,ykey,bkey,rkey,"name","img";
 monster m_array[MONSTER_NUM] =
 {   monster(35,19,2,0,1,0, "绿色史莱姆", "51"),
@@ -1704,6 +1704,13 @@ void MainWindow::print_static(int x, int y)
                 pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
                 scene_floor->addItem(pixmap_items[0]);
             }
+            else if (Tower[braver->floor][y * X + x] == 156) //大金币
+            {
+                pixmap_items[0] = new QGraphicsPixmapItem;
+                pixmap_items[0]->setPixmap(QPixmap::fromImage(img_gold));
+                pixmap_items[0]->setPos(QPointF(32 * x,32 * y));
+                scene_floor->addItem(pixmap_items[0]);
+            }
         }
     }
 }
@@ -2003,7 +2010,7 @@ int MainWindow::handle_keypress(int key_no)
         //银盾
         Tower[braver->floor][target_pos] = 0;
         braver->df += 22;
-        vars->gain_item_msg = "获得了银盾 攻击力增加22点";
+        vars->gain_item_msg = "获得了银盾 防御力增加22点";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 151) {
@@ -2033,6 +2040,12 @@ int MainWindow::handle_keypress(int key_no)
         Tower[braver->floor][target_pos] = 0;
         isIceMagic = 1;
         vars->gain_item_msg = "获得了冰霜魔法 碰到熔岩时体力损失减小 并能移除熔岩";
+        return 6;
+    }
+    else if (Tower[braver->floor][target_pos] == 156) {
+        Tower[braver->floor][target_pos] = 0;
+        braver->gold+=200;
+        vars->gain_item_msg = "获得了大金币 金币数增加200";
         return 6;
     }
     else if (Tower[braver->floor][target_pos] == 42) {
