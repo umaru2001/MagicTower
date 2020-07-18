@@ -64,10 +64,12 @@ public:
 	int rkey;
     int status;//×´Ì¬
     int dms_door;
+    bool floor_up;
+    bool book;
 
 	//³ÉÔ±º¯Êı
 	character(int h, int a, int d, int g, int e, int x, int y, 
-        int floor, int face, int l, int yk, int bk, int rk,int dms,string n, string i);
+        int floor, int face, int l, int yk, int bk, int rk,int dms,bool fu,bool book,string n, string i);
 	~character();
 
 private:

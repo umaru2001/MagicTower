@@ -19,9 +19,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Information.cpp \
     beginning.cpp \
+    book.cpp \
     dialog.cpp \
     dmsdoor.cpp \
     fight.cpp \
+    floortrans.cpp \
     main.cpp \
     mainwindow.cpp \
     mypushbutton.cpp \
@@ -31,9 +33,11 @@ SOURCES += \
 HEADERS += \
     Information.h \
     beginning.h \
+    book.h \
     dialog.h \
     dmsdoor.h \
     fight.h \
+    floortrans.h \
     mainwindow.h \
     mt.h \
     mypushbutton.h \
@@ -42,9 +46,11 @@ HEADERS += \
 
 FORMS += \
     beginning.ui \
+    book.ui \
     dialog.ui \
     dmsdoor.ui \
     fight.ui \
+    floortrans.ui \
     mainwindow.ui \
     store.ui
 

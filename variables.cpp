@@ -31,9 +31,9 @@ monster::~monster()
 }
 
 character::character(int h, int a, int d, int g, int e, int x, int y,
-    int floor, int face, int l, int yk, int bk, int rk, int dms,string n, string i) :
+    int floor, int face, int l, int yk, int bk, int rk, int dms,bool fu,bool book,string n, string i) :
     people(h, a, d, g, e, n, i), pos_x(x), pos_y(y),floor(floor), face(face),lv(l)
-    ,ykey(yk),bkey(bk),rkey(rk),dms_door(dms)
+    ,ykey(yk),bkey(bk),rkey(rk),dms_door(dms),floor_up(fu),book(book)
 {
 
 }
